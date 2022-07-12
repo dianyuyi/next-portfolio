@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'jf-jinxuanlatte-2.0';
+  src: url('/fonts/jf-jinxuanlatte-2.0/jf-jinxuanlatte-2.0-bold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'jf-jinxuanlatte-2.0';
+  src: url('/fonts/jf-jinxuanlatte-2.0/jf-jinxuanlatte-2.0-heavy.woff') format('woff');
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'jf-jinxuanlatte-2.0';
+  src: url('/fonts/jf-jinxuanlatte-2.0/jf-jinxuanlatte-2.0-medium.woff') format('woff');
+  font-weight: 500;
+  font-display: swap;
+}

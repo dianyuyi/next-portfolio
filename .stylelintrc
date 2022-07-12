@@ -1,0 +1,48 @@
+{
+  "processors": [
+    [
+      "stylelint-processor-styled-components",
+      {
+        "moduleName": "styled-components",
+        "importName": "default",
+        "strict": false,
+        "ignoreFiles": ["**/*.css"],
+        "parserPlugins": [
+          "jsx",
+          ["decorators", { "decoratorsBeforeExport": true }],
+          "classProperties",
+          "exportExtensions",
+          "functionBind",
+          "functionSent"
+        ]
+      }
+    ]
+  ],
+  "plugins": ["stylelint-order"],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-styled-components"],
+  "customSyntax": "postcss-scss",
+  "rules": {
+    "declaration-colon-newline-after": null,
+    "declaration-block-no-duplicate-properties": [
+      true,
+      {
+        "ignore": ["consecutive-duplicates-with-different-values"]
+      }
+    ],
+    "no-eol-whitespace": true,
+    "rule-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested", "after-single-line-comment"]
+      }
+    ],
+    "string-quotes": "single",
+    "selector-pseudo-element-colon-notation": "single",
+    "selector-class-pattern": "^[a-z][A-Za-z0-9-]+$",
+    "selector-id-pattern": "^[a-z][A-Za-z0-9-]+$",
+    "selector-type-case": ["lower", { "ignoreTypes": ["/^\\$\\w+/"] }],
+    "selector-type-no-unknown": [true, { "ignoreTypes": ["/-styled-mixin/", "/^\\$\\w+/"] }],
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["dummyValue"] }],
+    "value-no-vendor-prefix": [true, { "ignoreValues": ["box", "mask-image", "mask-repeat"] }]
+  }
+}
