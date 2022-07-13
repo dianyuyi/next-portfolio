@@ -28,6 +28,7 @@ declare global {
       width?: number | string
       height?: number | string
       desktop?: boolean
+      iconColor?: string
     }
   }
 }
