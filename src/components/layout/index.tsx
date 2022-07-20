@@ -7,9 +7,9 @@ import Footer from 'src/components/footer'
 
 type Props = {
   children: ReactNode
-  pageType: string
   title: string
   description: string
+  mediaList: SheetGlobal.MediaList
 }
 
 const variants = {
@@ -18,8 +18,7 @@ const variants = {
   exit: { opacity: 0, x: 0, y: -100 },
 }
 
-const Layout = ({ children, title, description }: Props): JSX.Element => {
-
+const Layout = ({ children, title, description, mediaList }: Props): JSX.Element => {
   return (
     <div>
       <NextSeo title={title} description={description} openGraph={{ title, description }} />
@@ -35,7 +34,7 @@ const Layout = ({ children, title, description }: Props): JSX.Element => {
       >
         <Header />
         {children}
-        <Footer />
+        <Footer mediaList={mediaList} />
       </motion.main>
     </div>
   )
