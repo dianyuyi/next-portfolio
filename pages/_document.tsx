@@ -33,21 +33,7 @@ export default class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
-            href="/fonts/jf-jinxuanlatte-2.0/jf-jinxuanlatte-2.0-bold.woff"
-            as="font"
-            type="font/woff"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/fonts/jf-jinxuanlatte-2.0/jf-jinxuanlatte-2.0-heavy.woff"
-            as="font"
-            type="font/woff"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/fonts/jf-jinxuanlatte-2.0/jf-jinxuanlatte-2.0-medium.woff"
+            href="/fonts/creamfont-1.1"
             as="font"
             type="font/woff"
             crossOrigin="anonymous"
