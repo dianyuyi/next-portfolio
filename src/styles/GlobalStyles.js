@@ -9,17 +9,8 @@ const CustomStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'creamfont-1.1', sans-serif;
-    line-height: 1.8;
-    line-break: normal;
-    word-wrap: break-word;
-  }
-
-  ::selection {
-    color: #fff;
-    background-color: #222;
   }
 `
-
 const GlobalStyles = () => (
   <>
     <BaseStyles />

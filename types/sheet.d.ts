@@ -19,7 +19,7 @@ declare namespace SheetGlobal {
     image: string
     image_webp: string
     thumb: string
-    tags: string
+    tags: array
     date: string
     description_tw: string
     description_en: string
@@ -34,13 +34,11 @@ declare namespace SheetGlobal {
     url: string
   }
 
-  
-  
   type sheetName = string
   type Works = Array<Work>
   type Arts = Array<Art>
   type MediaList = Array<Media>
-  
+
   interface SheetState {
     sheetData: Works | Arts | MediaList | null
     isLoading: boolean

@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
-            href="/fonts/creamfont-1.1"
+            href="/fonts/creamfont-2.1.otf"
             as="font"
             type="font/woff"
             crossOrigin="anonymous"

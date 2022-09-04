@@ -43,6 +43,7 @@
     "selector-type-case": ["lower", { "ignoreTypes": ["/^\\$\\w+/"] }],
     "selector-type-no-unknown": [true, { "ignoreTypes": ["/-styled-mixin/", "/^\\$\\w+/"] }],
     "value-keyword-case": ["lower", { "ignoreKeywords": ["dummyValue"] }],
-    "value-no-vendor-prefix": [true, { "ignoreValues": ["box", "mask-image", "mask-repeat"] }]
+    "value-no-vendor-prefix": [true, { "ignoreValues": ["box", "mask-image", "mask-repeat"] }],
+    "no-descending-specificity": [true, { "ignore": ["selectors-within-list"] }]
   }
 }

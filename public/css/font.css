@@ -1,5 +1,4 @@
 @font-face {
-  font-family: 'creamfont-1.1';
-  src: url('/fonts/creamfont-1.1.woff') format('woff');
-  font-display: swap;
+  font-family: 'creamfont-2.1';
+  src: url('/fonts/creamfont-2.1.otf') format('otf');
 }

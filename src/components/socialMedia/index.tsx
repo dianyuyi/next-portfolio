@@ -12,29 +12,30 @@ const SocialMedia = ({ iconColor, mediaList }: Props): JSX.Element => {
   return (
     <MediaContainer iconColor={iconColor}>
       <MediaList>
-        {mediaList.map((media) => {
-          const { id, name, icon, url } = media
-          const ReactIcon = (icon) => {
-            switch (icon) {
-              case 'FaLinkedin':
-                return <FaLinkedin />
-              case 'FaGithubSquare':
-                return <FaGithubSquare />
+        {mediaList &&
+          mediaList.map((media) => {
+            const { id, name, icon, url } = media
+            const ReactIcon = (icon) => {
+              switch (icon) {
+                case 'FaLinkedin':
+                  return <FaLinkedin />
+                case 'FaGithubSquare':
+                  return <FaGithubSquare />
 
-              case 'FaMedium':
-                return <FaMedium />
-              case 'FaTwitterSquare':
-                return <FaTwitterSquare />
+                case 'FaMedium':
+                  return <FaMedium />
+                case 'FaTwitterSquare':
+                  return <FaTwitterSquare />
+              }
             }
-          }
-          return (
-            <MediaItem key={id}>
-              <IconLink href={url} target="_blank" iconColor={iconColor}>
-                {ReactIcon(icon)}
-              </IconLink>
-            </MediaItem>
-          )
-        })}
+            return (
+              <MediaItem key={id}>
+                <IconLink href={url} target="_blank" iconColor={iconColor}>
+                  {ReactIcon(icon)}
+                </IconLink>
+              </MediaItem>
+            )
+          })}
       </MediaList>
     </MediaContainer>
   )

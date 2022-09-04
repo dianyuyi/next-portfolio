@@ -9,7 +9,7 @@ type Props = {
   children: ReactNode
   title: string
   description: string
-  mediaList: SheetGlobal.MediaList
+  mediaList: SheetGlobal.MediaList | null
 }
 
 const variants = {

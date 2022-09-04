@@ -3,10 +3,11 @@ const nextConfig = {
   trailingSlash: true,
   reactStrictMode: false,
   dangerouslyAllowSVG: true,
-  output: 'standalone',
+  target: 'serverless',
   images: {
-    loader: "cloudinary",
-    path: "https://res.cloudinary.com/loxi/image/upload/",
+    domains: ['res.cloudinary.com'],
+    // loader: "cloudinary",
+    // path: "https://res.cloudinary.com/loxi/image/upload/",
   },
 }
 
