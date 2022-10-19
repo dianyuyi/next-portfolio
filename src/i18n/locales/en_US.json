@@ -1,0 +1,37 @@
+{
+  "=============Title============": "=======Title====",
+  "title": {
+    "EN": "EN",
+    "TW": "TW",
+    "hero_title_01": "Calligraphy, ",
+    "hero_title_02": "Coding",
+    "home_title": "Home",
+    "about_title": "About Me",
+    "work_title": "Work Project",
+    "contact_title": "Contact Me"
+  },
+  "=============Article============": "=======Article====",
+  "article": {
+    "about_article_part1": "The university graduated from the Chinese Department. At the beginning, I was engaged in the editing of textbooks related to the undergraduate department. After I left due to health factors, I switched to the field of design because of my interest. At first, I accumulated work and experience in the way of SOHO, and later hoped to apply the design to a wider range of digital design, so I began to step into front-end web design by self-study.",
+    "about_article_part2": "While studying front-end design, also maintain the calligraphy interest that have cultivated since the university community. Now working hard to become a front-end developer focusing on digital art, and try to create as many digital and traditional cross-domain creations as possible."
+  },
+  "=============Work Page============": "=======Work Page====",
+  "work": {
+    "outer_link": "Outer link",
+    "confidentiality_clause": "Confidentiality clause",
+    "back_list": "Back List"
+  },
+  "=============Contact Page============": "=======Contact Page====",
+  "contact": {
+    "form_name": "Name",
+    "form_subject": "Subject",
+    "form_email": "Email",
+    "form_message": "Message",
+    "form_submit": "Submit"
+  },
+  "=============Error Page============": "=======Error Page====",
+  "error": {
+    "error_msg": "Ohhh...it's mess up...",
+    "error_back": "Back index (ˊ˙w˙ˋ)?"
+  }
+}

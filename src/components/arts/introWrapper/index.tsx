@@ -12,12 +12,14 @@ import {
 } from './styled'
 import { BiLinkExternal } from 'react-icons/bi'
 import { AiOutlineStop, AiOutlineBackward } from 'react-icons/ai'
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   art: SheetGlobal.Art | null
 }
 
 const IntroWrapper = ({ art }: Props): JSX.Element => {
+  const { t } = useTranslation()
   return (
     <IntroContainer>
       <IntroName>{`${art.name_en}`}</IntroName>

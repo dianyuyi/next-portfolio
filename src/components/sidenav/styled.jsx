@@ -15,7 +15,7 @@ export const SiderBg = styled(motion.div)`
 `
 
 export const SideNavList = styled(motion.ul)`
-  ${tw`absolute flex flex-col justify-center items-center w-full py-6 mt-[10%]`}
+  ${tw`absolute flex flex-col justify-center items-center w-full py-6 mt-[10%] backdrop-saturate-200	backdrop-blur-sm`}
 
   &.preventClick {
     ${tw`pointer-events-none`}

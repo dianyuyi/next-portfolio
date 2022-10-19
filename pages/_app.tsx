@@ -4,10 +4,10 @@ import Head from 'next/head'
 import { AnimatePresence } from 'framer-motion'
 import { DefaultSeo } from 'next-seo'
 
+import 'src/i18n'
 import GlobalStyles from 'src/styles/GlobalStyles'
 
 const App: FC<AppProps> = ({ Component, pageProps, router }) => {
-
   return (
     <>
       <Head>
