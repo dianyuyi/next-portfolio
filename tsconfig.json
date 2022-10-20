@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "src/*": ["src/*"]
+      "src/*": ["src/*"],
+      "server/*": ["server/*"]
     },
     "target": "es6",
     "module": "esnext",
@@ -21,6 +22,6 @@
     "incremental": true,
     "lib": ["es6", "dom", "esnext"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "server/notion/commonSDK"],
   "exclude": ["node_modules", ".next", "dist"]
 }

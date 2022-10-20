@@ -4,8 +4,13 @@ import Head from 'next/head'
 import { AnimatePresence } from 'framer-motion'
 import { DefaultSeo } from 'next-seo'
 
+import { ThemeProvider } from 'styled-components'
+
+import { wrapper } from 'src/redux/store'
+
 import 'src/i18n'
 import GlobalStyles from 'src/styles/GlobalStyles'
+import { theme } from 'src/styles/theme'
 
 const App: FC<AppProps> = ({ Component, pageProps, router }) => {
   return (
@@ -25,9 +30,11 @@ const App: FC<AppProps> = ({ Component, pageProps, router }) => {
       />
       <GlobalStyles />
       <AnimatePresence exitBeforeEnter initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
-        <Component {...pageProps} />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
       </AnimatePresence>
     </>
   )
 }
-export default App
+export default wrapper.withRedux(App)
