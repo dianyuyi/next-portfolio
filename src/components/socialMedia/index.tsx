@@ -4,17 +4,16 @@ import { FaLinkedin, FaGithubSquare, FaMedium, FaTwitterSquare } from 'react-ico
 import { MediaContainer, MediaList, MediaItem, IconLink } from './styled'
 
 interface Props {
-  mediaList: SheetGlobal.MediaList | null
-  iconColor: string
+  mediaList: Layout.MediaList | null
+  color: string
 }
 
-const SocialMedia = ({ iconColor, mediaList }: Props): JSX.Element => {
+const SocialMedia = ({ color, mediaList }: Props): JSX.Element => {
   return (
-    <MediaContainer iconColor={iconColor}>
+    <MediaContainer color={color}>
       <MediaList>
         {mediaList &&
-          mediaList.map((media) => {
-            const { id, name, icon, url } = media
+          mediaList.map((media: Layout.Media) => {
             const ReactIcon = (icon) => {
               switch (icon) {
                 case 'FaLinkedin':
@@ -29,9 +28,9 @@ const SocialMedia = ({ iconColor, mediaList }: Props): JSX.Element => {
               }
             }
             return (
-              <MediaItem key={id}>
-                <IconLink href={url} target="_blank" iconColor={iconColor}>
-                  {ReactIcon(icon)}
+              <MediaItem key={media.id}>
+                <IconLink href={media.url} target="_blank" color={color}>
+                  {ReactIcon(media.icon)}
                 </IconLink>
               </MediaItem>
             )

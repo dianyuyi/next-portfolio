@@ -7,20 +7,12 @@ export const FillImage = ({
   src,
   width,
   height,
-  objectFit = 'none',
   quality = 75,
   ...restProps
-}: ImageGlobal.FillProps): JSX.Element => {
+}: ImageGlobal.Props): JSX.Element => {
   return (
     <Box width={width} height={height}>
-      <Image
-        alt={alt}
-        src={src}
-        layout="fill"
-        objectFit={objectFit}
-        quality={quality}
-        {...restProps}
-      ></Image>
+      <Image alt={alt} src={src} fill quality={quality} {...restProps}></Image>
     </Box>
   )
 }

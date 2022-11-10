@@ -1,7 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit'
 
-import artListSlice from './artListSlice'
+import pageCollectSlice from './pageCollectSlice'
+import databaseSlice from './databaseSlice'
 
 export default combineReducers({
-  artListSlice,
+  pageCollectSlice,
+  databaseSlice,
 })

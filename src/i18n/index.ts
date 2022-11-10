@@ -1,17 +1,21 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
-import zhCN from './locales/zh_CN.json'
-import enUS from './locales/en_US.json'
+import ZH_TW from './locales/zh_tw.json'
+import EN_US from './locales/en_us.json'
+import JA from './locales/ja.json'
 
 i18n.use(initReactI18next).init({
-  lng: 'zh_CN',
-  fallbackLng: 'zh_CN',
+  lng: 'zh-tw',
+  fallbackLng: 'zh-tw',
   resources: {
-    zh_CN: {
-      translation: zhCN,
+    'zh-tw': {
+      translation: ZH_TW,
     },
-    en_US: {
-      translation: enUS,
+    'en-us': {
+      translation: EN_US,
+    },
+    ja: {
+      translation: JA,
     },
   },
   debug: false,

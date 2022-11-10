@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: true,
-  reactStrictMode: false,
+  // trailingSlash: true,
+  reactStrictMode: true,
   // dangerouslyAllowSVG: true,
   // target: 'serverless',
   images: {

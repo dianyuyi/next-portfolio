@@ -1,6 +1,8 @@
 import tw, { styled } from 'twin.macro'
 
 import { ResponsiveImage } from 'src/components/image'
+import Image from 'next/image'
+
 import { NextLink } from 'src/components/link'
 
 export const IntroWorkWrapper = styled.div`
@@ -11,7 +13,7 @@ export const IntroContainer = styled.div`
   ${tw`block w-full px-4 pb-4 md:w-1/2`}
 `
 
-export const IntroImg = styled(ResponsiveImage)`
+export const IntroImg = styled(Image)`
   ${tw`max-w-full h-auto`}
 `
 

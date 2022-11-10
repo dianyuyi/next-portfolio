@@ -23,10 +23,18 @@ export const NextLink = ({
   const rel = isExternal ? 'noreferrer noopener' : ''
 
   return (
-    <Link href={href} {...restProps} passHref>
-      <a target={target} className={className} onClick={onClick} rel={rel}>
-        {children}
-      </a>
+    <Link
+      href={href}
+      {...restProps}
+      passHref
+      target={target}
+      className={className}
+      onClick={onClick}
+      rel={rel}
+    >
+      {/* <a target={target} className={className} onClick={onClick} rel={rel}> */}
+      {children}
+      {/* </a> */}
     </Link>
   )
 }

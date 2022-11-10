@@ -42,6 +42,6 @@ declare namespace SheetGlobal {
   interface SheetState {
     sheetData: Works | Arts | MediaList | null
     isLoading: boolean
-    errors: Errors
+    errors: Global.Errors
   }
 }

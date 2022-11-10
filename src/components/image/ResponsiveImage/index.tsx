@@ -5,24 +5,12 @@ import { Box } from './styled'
 export const ResponsiveImage = ({
   alt,
   src,
-  width,
-  height,
-  objectFit = 'none',
   quality = 75,
   ...restProps
-}: ImageGlobal.ResponsiveProps): JSX.Element => {
+}: ImageGlobal.Props): JSX.Element => {
   return (
     <Box>
-      <Image
-        layout="responsive"
-        alt={alt}
-        src={src}
-        width={width}
-        height={height}
-        objectFit={objectFit}
-        quality={quality}
-        {...restProps}
-      ></Image>
+      <Image fill alt={alt} src={src} quality={quality} {...restProps}></Image>
     </Box>
   )
 }
