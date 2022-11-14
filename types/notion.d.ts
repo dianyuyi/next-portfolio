@@ -1,11 +1,34 @@
 declare namespace Notion {
-  import { DatabaseObjectResponse, PageObjectResponse, BlockObjectResponse } from '@notionhq/client'
+  import {
+    DatabaseObjectResponse,
+    PageObjectResponse,
+    BlockObjectResponse,
+    MultiSelectDatabasePropertyConfigResponse,
+    SelectDatabasePropertyConfigResponse,
+  } from '@notionhq/client'
 
   type database = Array<DatabaseObjectResponse>
   type collect = Array<DatabaseObjectResponse>
   type page = PageObjectResponse
   type blocks = Array<BlockObjectResponse>
   type block = BlockObjectResponse
+
+  type multiSelect = MultiSelectDatabasePropertyConfigResponse
+  type singleSelect = SelectDatabasePropertyConfigResponse
+
+  interface ListObject {
+    id: string
+    key: string
+    title: string
+    cover: string
+    date: string
+    url: string
+    type: string
+    language: string
+    tags: Array[string] | Array[]
+  }
+
+  type filterList = Array<ListObject> | Array[]
 
   interface Art {
     id: string

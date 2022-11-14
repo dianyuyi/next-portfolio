@@ -8,13 +8,14 @@ import { useAppDispatch } from 'src/redux/store'
 import { useDimensions } from 'src/hook/useDimensions'
 
 import {
-  SideNav,
-  SideBg,
-  SideNavList,
-  SideNavBtn,
-  SideNavListItem,
-  SideNavLink,
-  SideNavLngBtn,
+  SideContainer,
+  MotionBg,
+  MotionListWrapper,
+  ToggleButton,
+  ListItem,
+  ItemLink,
+  LanguageWrapper,
+  LanguageButton,
 } from './styled'
 import sideData from './sideData'
 
@@ -44,43 +45,48 @@ const SideNavbar = () => {
     />
   )
   return (
-    <SideNav
+    <SideContainer
       initial={false}
       animate={isSideOpen ? 'open' : 'closed'}
       custom={height}
       ref={containerRef}
     >
-      <SideBg variants={sideData.sideBar} />
-      <SideNavList variants={sideData.navigation} className={`${isSideOpen ? '' : 'preventClick'}`}>
+      <MotionBg variants={sideData.sideBar} />
+      <MotionListWrapper
+        variants={sideData.navigation}
+        className={`${isSideOpen ? '' : 'preventClick'}`}
+      >
         {sideData.menuItem.menu.links.map((link: Nav.Link, idx: number) => (
-          <SideNavListItem
+          <ListItem
             key={idx}
             onClick={() => setIsSideOpen(!isSideOpen)}
             variants={sideData.menuItem.variants}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <SideNavLink href={link.href}>{link.name}</SideNavLink>
-          </SideNavListItem>
+            <ItemLink href={link.href}>{link.name}</ItemLink>
+          </ListItem>
         ))}
-        {sideData.menuItem.menu.languages.map((language: Nav.Language, idx: number) => (
-          <SideNavListItem
-            key={idx}
-            onClick={() => setIsSideOpen(!isSideOpen)}
-            variants={sideData.menuItem.variants}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <SideNavLngBtn
-              className={`${languageCode === language.name ? 'active' : ''}`}
-              onClick={() => changeLanguage(language.code)}
+        <LanguageWrapper>
+          {sideData.menuItem.menu.languages.map((language: Nav.Language, idx: number) => (
+            <ListItem
+              key={idx}
+              onClick={() => setIsSideOpen(!isSideOpen)}
+              variants={sideData.menuItem.variants}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {t(`${language.name}`)}
-            </SideNavLngBtn>
-          </SideNavListItem>
-        ))}
-      </SideNavList>
-      <SideNavBtn onClick={() => setIsSideOpen(!isSideOpen)}>
+              <LanguageButton
+                className={`${languageCode === language.name ? 'active' : ''}`}
+                onClick={() => changeLanguage(language.code)}
+              >
+                {t(`${language.name}`)}
+              </LanguageButton>
+            </ListItem>
+          ))}
+        </LanguageWrapper>
+      </MotionListWrapper>
+      <ToggleButton onClick={() => setIsSideOpen(!isSideOpen)}>
         <svg width="23" height="23" viewBox="0 0 23 23">
           {sideData.menuToggle.map((toggle: Nav.Toggle, idx: number) => {
             return (
@@ -93,8 +99,8 @@ const SideNavbar = () => {
             )
           })}
         </svg>
-      </SideNavBtn>
-    </SideNav>
+      </ToggleButton>
+    </SideContainer>
   )
 }
 

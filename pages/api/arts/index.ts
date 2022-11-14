@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import notionDatabaseArrange from 'src/utils/notionDatabaseArrange'
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Notion.database | Global.Errors>
@@ -14,8 +16,9 @@ export default async function handler(
     (item: Notion.block) => item.properties.language.select.name === languageCode
   )
 
-  // res.status(200).json({ message: `test` })
-  return filterData !== undefined
-    ? res.status(200).json(filterData)
+  const result = notionDatabaseArrange(filterData)
+
+  return result !== undefined
+    ? res.status(200).json(result)
     : res.status(404).json({ message: `Notion database response error.` })
 }
