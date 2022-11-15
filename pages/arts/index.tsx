@@ -21,7 +21,7 @@ const Arts = (): JSX.Element => {
 
   useEffect(() => {
     const getPageData = async () => {
-      await fetch(`/api/arts`, {
+      await fetch(`/api/filterBlocks`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

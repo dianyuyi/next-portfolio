@@ -1,24 +1,25 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import notionDatabaseArrange from 'src/utils/notionDatabaseArrange'
+import { getDatabaseAPI } from 'server/notion/getDataBaseAPI'
+import notionKeyArrange from 'src/utils/notionKeyArrange'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Notion.database | Global.Errors>
 ) {
-  if (req.method !== 'POST') {
-    res.status(405).send({ message: 'Only POST requests allowed' })
+  if (req.method !== 'GET') {
+    res.status(405).send({ message: 'Only GET requests allowed' })
     return
   }
-  const { languageCode, database } = req.body
+  const response = await getDatabaseAPI('arts')
 
-  const filterData = database.filter(
-    (item: Notion.block) => item.properties.language.select.name === languageCode
+  const result = response.results.filter(
+    (item: Notion.block) => item.properties.language.select.name === 'zh-tw'
   )
 
-  const result = notionDatabaseArrange(filterData)
+  const keyList = notionKeyArrange(result)
 
   return result !== undefined
-    ? res.status(200).json(result)
-    : res.status(404).json({ message: `Notion database response error.` })
+    ? res.status(200).json(keyList)
+    : res.status(404).json({ message: `Get list of arts response error.` })
 }

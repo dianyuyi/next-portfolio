@@ -39,10 +39,6 @@ const SingleWork = () => {
   const { key: pageKey } = router.query
 
   const [art, setArt] = useState<Notion.Art>()
-  // const [art, setArt] = useState<Notion.Art>(() => {
-  //   const data = notionBlocksArrange(pageObject, pageBlocks)
-  //   return data
-  // })
 
   const imageRef = useRef()
   const introRef = useRef()
@@ -139,8 +135,12 @@ const SingleWork = () => {
 }
 
 export async function getStaticPaths() {
+  const list = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/arts`)
+    .then((res) => res.json())
+    .catch((error) => console.log(JSON.stringify(error)))
+
   return {
-    paths: [],
+    paths: list,
     fallback: 'blocking',
   }
 }
@@ -148,12 +148,7 @@ export async function getStaticPaths() {
 export const getStaticProps = wrapper.getStaticProps((store) => async ({ params }) => {
   const pageKey = params.key as string
 
-  // let pageKey = 'breath_of_spring'
-
   await store.dispatch(getPageCollectAsync(pageKey))
-
-  // await store.dispatch(getPageObjectAsync(id))
-  // await store.dispatch(getPageBlocksAsync(id))
 
   return {
     props: {},

@@ -28,7 +28,14 @@ declare namespace Notion {
     tags: Array[string] | Array[]
   }
 
+  interface KeyObject {
+    params: {
+      key: string
+    }
+  }
+
   type filterList = Array<ListObject> | Array[]
+  type keyList = Array<KeyObject> | Array[]
 
   interface Art {
     id: string
