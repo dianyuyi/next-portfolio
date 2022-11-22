@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const initialState = {
-  languageCode: 'zh-tw',
+  languageCode: 'zh_tw',
 }
 
 const languageSlice = createSlice({

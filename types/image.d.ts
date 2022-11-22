@@ -1,5 +1,13 @@
 declare namespace ImageGlobal {
-  interface Props {
+  interface FillProps {
+    alt: string
+    src: string
+    width: string
+    height: string
+    quality?: number
+  }
+
+  interface ResponsiveProps {
     alt: string
     src: string
     width: number

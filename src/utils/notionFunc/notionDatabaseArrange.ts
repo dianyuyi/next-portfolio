@@ -1,10 +1,10 @@
-export const notionDatabaseArrange = (blocks: Notion.blocks) => {
-  const sortResult = [] as Notion.filterList
+export const notionDatabaseArrange = (blocks: Notion.Blocks) => {
+  const sortResult = [] as Notion.FilterList
 
   blocks.forEach((block) => {
     const { properties } = block
 
-    const tags = properties.Tags.multi_select.forEach((tag: Notion.multiSelect) => tag.name)
+    const tags = properties.Tags.multi_select.map((tag: Notion.MultiSelect) => tag.name)
 
     sortResult.push({
       id: properties.id.rich_text[0]?.plain_text ?? '',

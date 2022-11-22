@@ -2,13 +2,31 @@
   "=============Title============": "=======Title====",
   "title": {
     "EN": "英",
-    "TW": "繁",
+    "TW": "中",
+    "JP": "日",
     "hero_title_01": "書墨與",
     "hero_title_02": "程式之海",
     "home_title": "回首頁",
     "about_title": "關於我",
     "work_title": "相關作品",
     "contact_title": "聯絡我"
+  },
+  "=============Common============": "=======Common====",
+  "button": {
+    "outer_link": "外部リンク",
+    "confidentiality_clause": "秘密保持契約",
+    "back_list": "バックリストページ"
+  },
+  "menu": {
+    "EN": "英",
+    "TW": "中",
+    "JP": "日",
+    "home": "トップページへ戻る",
+    "about": "個人情報",
+    "work_projects": "仕事プロジェクト",
+    "side_projects": "個人プロジェクト",
+    "arts": "アートデザイン",
+    "contact": "お問い合わせ"
   },
   "=============Article============": "=======Article====",
   "article": {

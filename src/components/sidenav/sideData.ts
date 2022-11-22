@@ -72,15 +72,16 @@ const sideData: Nav.Side = {
     },
     menu: {
       links: [
-        { name: 'Home', href: '/' },
-        { name: 'About', href: '/about' },
-        { name: 'Work Project', href: '/work' },
-        { name: 'Side Project', href: '/side' },
-        { name: 'Arts', href: '/arts' },
+        { name: 'home', href: '/' },
+        { name: 'about', href: '/about' },
+        { name: 'work_projects', href: '/work' },
+        { name: 'side_projects', href: '/side' },
+        { name: 'arts', href: '/arts' },
+        { name: 'contact', href: '/contact' },
       ],
       languages: [
-        { name: 'TW', code: 'zh-tw' },
-        { name: 'EN', code: 'en-us' },
+        { name: 'TW', code: 'zh_tw' },
+        { name: 'EN', code: 'en_us' },
         { name: 'JP', code: 'ja' },
       ],
     },

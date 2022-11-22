@@ -4,12 +4,12 @@ import { motion } from 'framer-motion'
 
 import Header from 'src/components/header'
 import Footer from 'src/components/footer'
+import mediaList from 'src/utils/mediaData'
 
 type Props = {
   children: ReactNode
   title: string
   description: string
-  mediaList: Layout.MediaList
 }
 
 const variants = {
@@ -18,7 +18,7 @@ const variants = {
   exit: { opacity: 0, x: 0, y: -100 },
 }
 
-const Layout = ({ children, title, description, mediaList }: Props): JSX.Element => {
+const Layout = ({ children, title, description }: Props): JSX.Element => {
   return (
     <div>
       <NextSeo title={title} description={description} openGraph={{ title, description }} />
@@ -28,11 +28,11 @@ const Layout = ({ children, title, description, mediaList }: Props): JSX.Element
         exit="exit"
         variants={variants}
         transition={{ type: 'linear' }}
-        className="flex flex-col items-start w-full pt-10
-      px-8 sm:px-16 md:px-36 lg:px-52 xl:px-80 2xl:px-96
-      h-full"
+        //   className="flex flex-col items-start w-full pt-10
+        // px-8 sm:px-16 md:px-36 lg:px-52 xl:px-80 2xl:px-96
+        // h-full"
       >
-        <Header />
+        {/* <Header /> */}
         {children}
         <Footer mediaList={mediaList} />
       </motion.main>

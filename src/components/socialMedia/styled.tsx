@@ -21,5 +21,5 @@ export const MediaItem = styled.div`
 
 export const IconLink = styled(NextLink)(({ color }: StyleProps) => [
   tw`duration-300 hover:opacity-70`,
-  color === 'white' ? tw`text-white text-xl` : tw`text-[#222] text-2xl`,
+  color === 'white' ? tw`text-white text-xl` : tw`text-zinc-900 text-2xl`,
 ])

@@ -1,14 +1,12 @@
 import React from 'react'
 import { GetStaticProps } from 'next'
 
-import mediaList from 'src/utils/mediaData'
-
 import Layout from 'src/components/layout'
 import { NextLink } from 'src/components/link'
 
 const Index = (): JSX.Element => {
   return (
-    <Layout title="index" description="首頁測試中" mediaList={mediaList}>
+    <Layout title="index" description="首頁測試中">
       <main>
         <NextLink href="/arts/breath_of_spring">Sample test</NextLink>
       </main>

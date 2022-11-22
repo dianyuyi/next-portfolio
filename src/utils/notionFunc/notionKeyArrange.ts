@@ -1,5 +1,5 @@
-export const notionKeyArrange = (blocks: Notion.blocks) => {
-  const sortResult = [] as Notion.keyList
+export const notionKeyArrange = (blocks: Notion.Blocks) => {
+  const sortResult = [] as Notion.KeyList
 
   blocks.forEach((block) => {
     const { properties } = block

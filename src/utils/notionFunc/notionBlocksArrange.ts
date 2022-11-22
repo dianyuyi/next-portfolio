@@ -1,4 +1,4 @@
-export const notionBlocksArrange = (page: Notion.page, blocks: Notion.blocks) => {
+export const notionBlocksArrange = (page: Notion.Page, blocks: Notion.Blocks) => {
   const sortResult = {
     id: page.id,
     title: page.properties.title.title[0].plain_text,
@@ -8,7 +8,7 @@ export const notionBlocksArrange = (page: Notion.page, blocks: Notion.blocks) =>
     tags: [],
     workList: [],
     contexts: [],
-  } as Notion.Art
+  } as Notion.PageContent
 
   blocks.map((block) => {
     const { type } = block

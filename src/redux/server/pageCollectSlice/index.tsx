@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import { getPageCollectAPI } from 'server/notion/getPageCollectAPI'
 import { AppDispatch } from 'src/redux/store'
-import { defineNotionError } from 'src/utils/notionErrorMsg'
+import { defineNotionError } from 'src/utils/notionFunc'
 
 export const initialState = {
   response: [],

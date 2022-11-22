@@ -19,7 +19,7 @@ const App: FC<AppProps> = ({ Component, pageProps, router }) => {
         <link rel="icon" href="/favicon.ico" type="image/png" />
       </Head>
       <DefaultSeo
-        titleTemplate="Loxi's Portfolio - %s"
+        titleTemplate="%s | Loxi's Portfolio"
         openGraph={{
           type: 'website',
           locale: 'zh_TW',

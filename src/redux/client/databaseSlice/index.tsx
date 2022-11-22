@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import { AppDispatch } from 'src/redux/store'
 import { getDatabaseAPI } from 'server/notion/getDataBaseAPI'
-import { defineNotionError } from 'src/utils/notionErrorMsg'
+import { defineNotionError } from 'src/utils/notionFunc'
 
 export const initialState = {
   response: [],

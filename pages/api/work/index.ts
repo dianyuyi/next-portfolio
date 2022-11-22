@@ -11,7 +11,7 @@ export default async function handler(
     res.status(405).send({ message: 'Only GET requests allowed' })
     return
   }
-  const response = await getDatabaseAPI('arts')
+  const response = await getDatabaseAPI('work-projects')
 
   const result = response.results.filter(
     (item: Notion.Block) => item.properties.language.select.name === 'zh_tw'
@@ -21,5 +21,5 @@ export default async function handler(
 
   return result !== undefined
     ? res.status(200).json(keyList)
-    : res.status(404).json({ message: `Get list of arts response error.` })
+    : res.status(404).json({ message: `Get list of work-projects response error.` })
 }

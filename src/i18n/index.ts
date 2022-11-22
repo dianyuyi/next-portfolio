@@ -5,13 +5,13 @@ import EN_US from './locales/en_us.json'
 import JA from './locales/ja.json'
 
 i18n.use(initReactI18next).init({
-  lng: 'zh-tw',
-  fallbackLng: 'zh-tw',
+  lng: 'zh_tw',
+  fallbackLng: 'zh_tw',
   resources: {
-    'zh-tw': {
+    zh_tw: {
       translation: ZH_TW,
     },
-    'en-us': {
+    en_us: {
       translation: EN_US,
     },
     ja: {

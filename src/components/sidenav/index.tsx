@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
@@ -23,17 +25,23 @@ const SideNavbar = () => {
   const [isSideOpen, setIsSideOpen] = React.useState(false)
   const containerRef = useRef(null)
   const { height } = useDimensions(containerRef)
+  const { t, i18n } = useTranslation()
+  const dispatch = useAppDispatch()
 
   const languageCode = useSelector(
     (state: Store.RootState) => state.client.languageCodeSlice.languageCode
   )
 
-  const { t, i18n } = useTranslation()
-  const dispatch = useAppDispatch()
   const changeLanguage = (code: string) => {
     i18n.changeLanguage(code)
     dispatch(setLanguageCode(code))
   }
+
+  // const handleMenuOpen = (value: boolean) => {
+  //   setTimeout(() => {
+  //     setIsSideOpen(value)
+  //   }, 1000)
+  // }
 
   const Path = (props: Nav.Toggle) => (
     <motion.path
@@ -64,29 +72,28 @@ const SideNavbar = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <ItemLink href={link.href}>{link.name}</ItemLink>
+            <ItemLink href={link.href}>{t(`menu.${link.name}`)}</ItemLink>
           </ListItem>
         ))}
-        <LanguageWrapper>
+        <LanguageWrapper className={`${isSideOpen ? '' : 'preventClick'}`}>
           {sideData.menuItem.menu.languages.map((language: Nav.Language, idx: number) => (
             <ListItem
               key={idx}
-              onClick={() => setIsSideOpen(!isSideOpen)}
               variants={sideData.menuItem.variants}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
               <LanguageButton
-                className={`${languageCode === language.name ? 'active' : ''}`}
+                className={`${languageCode === language.code ? 'active' : ''}`}
                 onClick={() => changeLanguage(language.code)}
               >
-                {t(`${language.name}`)}
+                {t(`menu.${language.name}`)}
               </LanguageButton>
             </ListItem>
           ))}
         </LanguageWrapper>
       </MotionListWrapper>
-      <ToggleButton onClick={() => setIsSideOpen(!isSideOpen)}>
+      <ToggleButton onClick={() => setIsSideOpen(!isSideOpen)} aria-label="toggle-button">
         <svg width="23" height="23" viewBox="0 0 23 23">
           {sideData.menuToggle.map((toggle: Nav.Toggle, idx: number) => {
             return (

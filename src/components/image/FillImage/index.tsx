@@ -9,10 +9,22 @@ export const FillImage = ({
   height,
   quality = 75,
   ...restProps
-}: ImageGlobal.Props): JSX.Element => {
+}: ImageGlobal.FillProps): JSX.Element => {
   return (
     <Box width={width} height={height}>
-      <Image alt={alt} src={src} fill quality={quality} {...restProps}></Image>
+      <Image
+        alt={alt}
+        src={src}
+        fill
+        quality={quality}
+        sizes="(max-width: 768px) 100vw,
+        (max-width: 1200px) 50vw,
+        33vw"
+        style={{
+          objectFit: 'cover',
+        }}
+        {...restProps}
+      ></Image>
     </Box>
   )
 }

@@ -7,14 +7,17 @@ declare namespace Notion {
     SelectDatabasePropertyConfigResponse,
   } from '@notionhq/client'
 
-  type database = Array<DatabaseObjectResponse>
-  type collect = Array<DatabaseObjectResponse>
-  type page = PageObjectResponse
-  type blocks = Array<BlockObjectResponse>
-  type block = BlockObjectResponse
+  // type database
+  type Database = Array<DatabaseObjectResponse>
+  // key collect
+  type Collect = Array<DatabaseObjectResponse>
 
-  type multiSelect = MultiSelectDatabasePropertyConfigResponse
-  type singleSelect = SelectDatabasePropertyConfigResponse
+  type Page = PageObjectResponse
+  type Block = BlockObjectResponse
+  type Blocks = Array<BlockObjectResponse>
+
+  type MultiSelect = MultiSelectDatabasePropertyConfigResponse
+  type SingleSelect = SelectDatabasePropertyConfigResponse
 
   interface ListObject {
     id: string
@@ -34,10 +37,10 @@ declare namespace Notion {
     }
   }
 
-  type filterList = Array<ListObject> | Array[]
-  type keyList = Array<KeyObject> | Array[]
+  type FilterList = Array<ListObject> | Array[]
+  type KeyList = Array<KeyObject> | Array[]
 
-  interface Art {
+  interface PageContent {
     id: string
     title: string
     cover: string

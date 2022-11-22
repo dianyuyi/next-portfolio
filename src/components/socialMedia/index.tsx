@@ -28,7 +28,7 @@ const SocialMedia = ({ color, mediaList }: Props): JSX.Element => {
               }
             }
             return (
-              <MediaItem key={media.id}>
+              <MediaItem key={media.id} aria-label={media.name}>
                 <IconLink href={media.url} target="_blank" color={color}>
                   {ReactIcon(media.icon)}
                 </IconLink>

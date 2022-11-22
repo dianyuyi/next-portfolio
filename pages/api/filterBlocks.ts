@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import notionDatabaseArrange from 'src/utils/notionDatabaseArrange'
+import { notionDatabaseArrange } from 'src/utils/notionFunc'
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Notion.database | Global.Errors>
+  res: NextApiResponse<Notion.Database | Global.Errors>
 ) {
   if (req.method !== 'POST') {
     res.status(405).send({ message: 'Only POST requests allowed' })
@@ -13,7 +13,7 @@ export default async function handler(
   const { languageCode, database } = req.body
 
   const filterData = database.filter(
-    (item: Notion.block) => item.properties.language.select.name === languageCode
+    (item: Notion.Block) => item.properties.language.select.name === languageCode
   )
 
   const result = notionDatabaseArrange(filterData)

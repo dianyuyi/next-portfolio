@@ -3,12 +3,30 @@
   "title": {
     "EN": "EN",
     "TW": "TW",
+    "JP": "JP",
     "hero_title_01": "Calligraphy, ",
     "hero_title_02": "Coding",
     "home_title": "Home",
     "about_title": "About Me",
     "work_title": "Work Project",
     "contact_title": "Contact Me"
+  },
+  "=============Common============": "=======Common====",
+  "button": {
+    "outer_link": "Outer link",
+    "confidentiality_clause": "Confidentiality clause",
+    "back_list": "Back List"
+  },
+  "menu": {
+    "EN": "EN",
+    "TW": "TW",
+    "JP": "JP",
+    "home": "Home",
+    "about": "About",
+    "work_projects": "Work Projects",
+    "side_projects": "Side Projects",
+    "arts": "Arts",
+    "contact": "Contact"
   },
   "=============Article============": "=======Article====",
   "article": {
