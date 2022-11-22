@@ -51,12 +51,13 @@ const SingleWork = () => {
 }
 
 export async function getStaticPaths() {
-  const list = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/arts`)
-    .then((res) => res.json())
-    .catch((error) => console.log(JSON.stringify(error)))
+  // const list = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/arts`)
+  //   .then((res) => res.json())
+  //   .catch((error) => console.log(JSON.stringify(error)))
 
   return {
-    paths: list,
+    // paths: list,
+    paths: [],
     fallback: 'blocking',
   }
 }
