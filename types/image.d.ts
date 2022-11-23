@@ -5,6 +5,7 @@ declare namespace ImageGlobal {
     width: string
     height: string
     quality?: number
+    priority?: boolean
   }
 
   interface ResponsiveProps {
@@ -13,5 +14,6 @@ declare namespace ImageGlobal {
     width: number
     height: number
     quality?: number
+    priority?: boolean
   }
 }

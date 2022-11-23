@@ -30,16 +30,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="zh-TW">
-        <Head>
-          <link
-            rel="preload"
-            href="/fonts/creamfont-2.1.otf"
-            as="font"
-            type="font/woff"
-            crossOrigin="anonymous"
-          />
-          <link rel="stylesheet" href="/css/font.css" />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

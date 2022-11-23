@@ -8,7 +8,7 @@ const CustomStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'creamfont-1.1', sans-serif;
+    font-family: 'creamfont-2.1', sans-serif;
   }
 `
 const GlobalStyles = () => (

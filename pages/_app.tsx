@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components'
 
 import { wrapper } from 'src/redux/store'
 
+import '../public/css/font.css'
 import 'src/i18n'
 import GlobalStyles from 'src/styles/GlobalStyles'
 import { theme } from 'src/styles/theme'

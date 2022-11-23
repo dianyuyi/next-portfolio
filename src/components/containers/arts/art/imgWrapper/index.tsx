@@ -6,7 +6,7 @@ import { IntroImg } from './styled'
 const ImgWrapper = ({ art }: { art: Notion.PageContent }): JSX.Element => {
   return (
     <IntroContainer>
-      <IntroImg src={art.cover} width={600} height={400} alt={art.title} />
+      <IntroImg src={art.cover} width={600} height={400} alt={art.title} priority={true} />
     </IntroContainer>
   )
 }
