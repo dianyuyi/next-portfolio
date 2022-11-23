@@ -16,21 +16,23 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "test": "jest",
+    "nlint": "next lint",
     "lint-staged": "lint-staged",
     "postinstall": "husky install",
-    "prepack": "pinst --disable",
-    "postpack": "pinst --enable"
+    "test": "jest --watchAll --coverage",
+    "lint": "eslint --fix",
+    "pretty": "prettier --write .",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{tsx,ts,js,jsx}": [
-      "stylelint",
+      "eslint --fix",
+      "stylelint --fix",
       "prettier --write",
-      "eslint --fix"
+      "jest --bail --findRelatedTests --passWithNoTests"
     ],
     "*.{css,less,scss}": [
-      "stylelint",
+      "stylelint --fix",
       "prettier --write"
     ],
     "*.{md,json,yaml,yml}": [
@@ -70,9 +72,7 @@
     "@stylelint/postcss-css-in-js": "^0.38.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
-    "@testing-library/react-hooks": "^8.0.0",
     "@testing-library/user-event": "^14.4.3",
-    "@types/enzyme": "^3.10.11",
     "@types/jest": "^28.1.1",
     "@types/lodash": "^4.14.186",
     "@types/node": "16.11.12",
@@ -82,14 +82,11 @@
     "@types/styled-components": "^5.1.24",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.12.0",
-    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "babel-jest": "^28.1.0",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-styled-components": "^2.0.7",
     "babel-plugin-twin": "^1.0.2",
     "cors": "^2.8.5",
-    "enzyme": "^3.11.0",
-    "enzyme-to-json": "^3.6.2",
     "eslint": "8.16.0",
     "eslint-config-next": "^13.0.0",
     "eslint-config-prettier": "^8.3.0",

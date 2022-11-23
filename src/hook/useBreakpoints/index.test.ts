@@ -2,9 +2,8 @@
  * @jest-environment jsdom
  */
 
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import { cleanup } from '@testing-library/react'
-import 'jest-styled-components'
 import '@testing-library/jest-dom'
 
 import { useBreakpoints } from 'src/hook'
@@ -25,14 +24,9 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 })
 
-test('hook', () => {
+test('breakpoints hook', () => {
   const { result } = renderHook(() => useBreakpoints())
   expect(result).toStrictEqual({
-    all: [
-      { isUpLg: null, isUpMd: null, isUpSm: null, isUpXl: null, isUpXxl: null },
-      { isUpLg: false, isUpMd: false, isUpSm: false, isUpXl: false, isUpXxl: false },
-    ],
     current: { isUpLg: false, isUpMd: false, isUpSm: false, isUpXl: false, isUpXxl: false },
-    error: undefined,
   })
 })
