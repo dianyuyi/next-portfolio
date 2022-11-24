@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { NextLink } from 'src/components/link'
 
 export const SideContainer = styled(motion.nav)`
-  ${tw`block fixed top-0 right-0 bottom-0 w-screen pointer-events-none z-[9999]`}
+  ${tw`block fixed top-0 right-0 bottom-0 w-screen pointer-events-none z-[9999] md:hidden`}
 `
 
 export const ToggleButton = styled.button`

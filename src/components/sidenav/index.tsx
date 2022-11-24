@@ -2,11 +2,8 @@
 
 import React, { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { motion } from 'framer-motion'
 
-import { setLanguageCode } from 'src/redux/client/languageCodeSlice'
-import { useAppDispatch } from 'src/redux/store'
 import { useDimensions } from 'src/hook/useDimensions'
 
 import {
@@ -21,27 +18,20 @@ import {
 } from './styled'
 import sideData from './sideData'
 
-const SideNavbar = () => {
-  const [isSideOpen, setIsSideOpen] = React.useState(false)
+const SideNavbar = ({
+  status,
+  handleSideNav,
+  languageCode,
+  changeLanguage,
+}: {
+  status: boolean
+  handleSideNav: () => void
+  languageCode: string
+  changeLanguage: (arg0: string) => void
+}) => {
   const containerRef = useRef(null)
   const { height } = useDimensions(containerRef)
-  const { t, i18n } = useTranslation()
-  const dispatch = useAppDispatch()
-
-  const languageCode = useSelector(
-    (state: Store.RootState) => state.client.languageCodeSlice.languageCode
-  )
-
-  const changeLanguage = (code: string) => {
-    i18n.changeLanguage(code)
-    dispatch(setLanguageCode(code))
-  }
-
-  // const handleMenuOpen = (value: boolean) => {
-  //   setTimeout(() => {
-  //     setIsSideOpen(value)
-  //   }, 1000)
-  // }
+  const { t } = useTranslation()
 
   const Path = (props: Nav.Toggle) => (
     <motion.path
@@ -55,19 +45,19 @@ const SideNavbar = () => {
   return (
     <SideContainer
       initial={false}
-      animate={isSideOpen ? 'open' : 'closed'}
+      animate={status ? 'open' : 'closed'}
       custom={height}
       ref={containerRef}
     >
       <MotionBg variants={sideData.sideBar} />
       <MotionListWrapper
         variants={sideData.navigation}
-        className={`${isSideOpen ? '' : 'preventClick'}`}
+        className={`${status ? '' : 'preventClick'}`}
       >
         {sideData.menuItem.menu.links.map((link: Nav.Link, idx: number) => (
           <ListItem
             key={idx}
-            onClick={() => setIsSideOpen(!isSideOpen)}
+            onClick={() => handleSideNav()}
             variants={sideData.menuItem.variants}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
@@ -75,7 +65,7 @@ const SideNavbar = () => {
             <ItemLink href={link.href}>{t(`menu.${link.name}`)}</ItemLink>
           </ListItem>
         ))}
-        <LanguageWrapper className={`${isSideOpen ? '' : 'preventClick'}`}>
+        <LanguageWrapper className={`${status ? '' : 'preventClick'}`}>
           {sideData.menuItem.menu.languages.map((language: Nav.Language, idx: number) => (
             <ListItem
               key={idx}
@@ -93,7 +83,7 @@ const SideNavbar = () => {
           ))}
         </LanguageWrapper>
       </MotionListWrapper>
-      <ToggleButton onClick={() => setIsSideOpen(!isSideOpen)} aria-label="toggle-button">
+      <ToggleButton onClick={() => handleSideNav()} aria-label="toggle-button">
         <svg width="23" height="23" viewBox="0 0 23 23">
           {sideData.menuToggle.map((toggle: Nav.Toggle, idx: number) => {
             return (

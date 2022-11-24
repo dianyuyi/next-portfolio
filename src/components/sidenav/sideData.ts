@@ -12,7 +12,7 @@ const sideData: Nav.Side = {
       clipPath: 'circle(24px at 90vw 36px)',
       // clipPath: `polygon(85% 0%, 100vw 0%, 100vw 60px, 85% 60px)`,
       transition: {
-        delay: 0.5,
+        delay: 0.3,
         type: 'spring',
         stiffness: 400,
         damping: 40,
@@ -59,14 +59,14 @@ const sideData: Nav.Side = {
         y: 0,
         opacity: 1,
         transition: {
-          y: { stiffness: 1000, velocity: -100 },
+          y: { stiffness: 100, velocity: -10 },
         },
       },
       closed: {
-        y: 50,
+        y: 10,
         opacity: 0,
         transition: {
-          y: { stiffness: 1000 },
+          y: { stiffness: 500 },
         },
       },
     },

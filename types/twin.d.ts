@@ -12,6 +12,7 @@ declare module 'react' {
   interface HTMLAttributes<T> extends DOMAttributes<T> {
     css?: CSSProp
     tw?: string
+    type?: string
   }
   // The inline svg css prop
   interface SVGProps<T> extends SVGProps<SVGSVGElement> {
@@ -29,6 +30,7 @@ declare global {
       height?: number | string
       desktop?: boolean
       iconColor?: string
+      type?: string
     }
   }
 }
