@@ -40,18 +40,7 @@ const Arts = (): JSX.Element => {
 
   return (
     <Layout title={t(`menu.arts`)} description="arts 列表">
-      <ArtListPage arts={arts} />
-      {/* <main>
-        {arts &&
-          arts.map((art) => {
-            return (
-              <div key={art.id}>
-                <Image src={art.cover} width={200} height={200} alt={art.title} />
-                <p>{art.title}</p>
-              </div>
-            )
-          })}
-      </main> */}
+      <ArtListPage arts={arts} t={t} />
     </Layout>
   )
 }

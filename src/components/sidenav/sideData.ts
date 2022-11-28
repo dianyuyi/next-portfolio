@@ -10,9 +10,8 @@ const sideData: Nav.Side = {
     }),
     closed: {
       clipPath: 'circle(24px at 90vw 36px)',
-      // clipPath: `polygon(85% 0%, 100vw 0%, 100vw 60px, 85% 60px)`,
       transition: {
-        delay: 0.3,
+        delay: 0.5,
         type: 'spring',
         stiffness: 400,
         damping: 40,
@@ -59,14 +58,14 @@ const sideData: Nav.Side = {
         y: 0,
         opacity: 1,
         transition: {
-          y: { stiffness: 100, velocity: -10 },
+          y: { stiffness: 100, velocity: -30 },
         },
       },
       closed: {
         y: 10,
         opacity: 0,
         transition: {
-          y: { stiffness: 500 },
+          y: { stiffness: 200 },
         },
       },
     },
@@ -74,10 +73,9 @@ const sideData: Nav.Side = {
       links: [
         { name: 'home', href: '/' },
         { name: 'about', href: '/about' },
-        { name: 'work_projects', href: '/work' },
-        { name: 'side_projects', href: '/side' },
+        { name: 'work_projects', href: '/workProjects' },
+        { name: 'side_projects', href: '/sideProjects' },
         { name: 'arts', href: '/arts' },
-        { name: 'contact', href: '/contact' },
       ],
       languages: [
         { name: 'TW', code: 'zh_tw' },

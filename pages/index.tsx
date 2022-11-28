@@ -1,15 +1,16 @@
 import React from 'react'
-import { GetStaticProps } from 'next'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
+
+import { useTranslation } from 'react-i18next'
 
 import Layout from 'src/components/layout'
-import { NextLink } from 'src/components/link'
+import HomePage from 'src/components/containers/home'
 
-const Index = (): JSX.Element => {
+const Index = (_props: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element => {
+  const { t } = useTranslation()
   return (
-    <Layout title="index" description="首頁測試中">
-      <main>
-        <NextLink href="/arts/breath_of_spring">Sample test</NextLink>
-      </main>
+    <Layout title="Home" description="Home page">
+      <HomePage t={t} />
     </Layout>
   )
 }

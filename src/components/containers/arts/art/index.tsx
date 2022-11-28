@@ -1,6 +1,8 @@
 import React from 'react'
+
 import ImgWrapper from './imgWrapper'
 import IntroWrapper from './introWrapper'
+import { ArtHolder } from 'src/components/containers/arts/holder'
 import { IntroWorkWrapper } from './styled'
 
 const ArtPage = ({ art }: { art: Notion.PageContent }): JSX.Element => {
@@ -11,7 +13,9 @@ const ArtPage = ({ art }: { art: Notion.PageContent }): JSX.Element => {
           <ImgWrapper art={art} />
           <IntroWrapper art={art} />
         </>
-      ) : null}
+      ) : (
+        <ArtHolder />
+      )}
     </IntroWorkWrapper>
   )
 }

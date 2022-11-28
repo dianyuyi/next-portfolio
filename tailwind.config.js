@@ -13,7 +13,12 @@ module.exports = {
   },
   theme: {
     fontFamily: {
-      jinxuanlatte: ['jf-jinxuanlatte-2.0', 'sans-serif'],
+      creamfont: ['creamfont-2.1', 'sans-serif'],
+    },
+    backgroundImage: {
+      'button-bg': "url('/assets/btn_bg.png')",
+      'loxi-sign': "url('/assets/hero_loxi_sign.webp')",
+      'home-bg': "url('/assets/hero_bg.webp')",
     },
     extend: {
       screens: {

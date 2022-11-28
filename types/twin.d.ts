@@ -13,6 +13,7 @@ declare module 'react' {
     css?: CSSProp
     tw?: string
     type?: string
+    active?: string
   }
   // The inline svg css prop
   interface SVGProps<T> extends SVGProps<SVGSVGElement> {

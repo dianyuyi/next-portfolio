@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useRef } from 'react'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 
@@ -31,6 +32,7 @@ const SideNavbar = ({
 }) => {
   const containerRef = useRef(null)
   const { height } = useDimensions(containerRef)
+  const router = useRouter()
   const { t } = useTranslation()
 
   const Path = (props: Nav.Toggle) => (
@@ -61,6 +63,7 @@ const SideNavbar = ({
             variants={sideData.menuItem.variants}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
+            active={link.href !== '/' && router.asPath.includes(link.href) ? 'true' : 'false'}
           >
             <ItemLink href={link.href}>{t(`menu.${link.name}`)}</ItemLink>
           </ListItem>

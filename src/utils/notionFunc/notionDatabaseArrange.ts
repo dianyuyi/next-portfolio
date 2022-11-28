@@ -11,13 +11,20 @@ export const notionDatabaseArrange = (blocks: Notion.Blocks) => {
       key: properties.key.rich_text[0]?.plain_text ?? '',
       title: properties.Name.title[0]?.plain_text ?? '',
       cover: properties.cover.files[0]?.external?.url ?? '',
-      date: properties.Date.date[0]?.start ?? '',
+      date: properties.Date.date?.start ?? '',
       url: properties.id.rich_text[0]?.plain_text ?? '',
       type: properties.type.select?.name ?? '',
       language: properties.language.select?.name ?? '',
       tags,
     })
   })
+
+  sortResult.sort((curr, next) => {
+    const currDate = new Date(curr.date).getTime()
+    const nextDate = new Date(next.date).getTime()
+    return nextDate - currDate
+  })
+
   return sortResult
 }
 

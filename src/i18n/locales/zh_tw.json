@@ -39,6 +39,12 @@
     "confidentiality_clause": "保密條款",
     "back_list": "回清單頁"
   },
+  "=============Side Projects============": "=======Side Projects====",
+  "sideProjects": {
+    "list_title": "個人專案",
+    "confidentiality_clause": "保密條款",
+    "back_list": "回清單頁"
+  },
   "=============Arts============": "=======Arts====",
   "arts": {
     "list_title": "藝術設計",

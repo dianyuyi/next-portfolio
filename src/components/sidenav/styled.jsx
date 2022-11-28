@@ -31,7 +31,8 @@ export const MotionListWrapper = styled(motion.ul)`
 `
 
 export const ListItem = styled(motion.li)`
-  ${tw`p-2`}
+  ${tw`duration-300 hover:border-b-2 hover:border-b-black`}
+  ${({ active }) => (active === 'true' ? tw`border-b-2 border-b-black m-2` : tw`p-2`)}
 `
 
 export const ItemLink = styled(NextLink)`

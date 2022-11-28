@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 
 import { wrapper } from 'src/redux/store'
-import { useSideNavSwitch } from 'src/hook'
+import { useSideNavSwitch, useBreakpoints } from 'src/hook'
 import { useAppDispatch } from 'src/redux/store'
 import { setLanguageCode } from 'src/redux/client/languageCodeSlice'
 
@@ -21,6 +21,7 @@ import Sidenav from 'src/components/sidenav'
 
 const App: FC<AppProps> = ({ Component, pageProps, router }) => {
   const { status, handleSideNav } = useSideNavSwitch(false)
+  const breakpoints = useBreakpoints()
   const { i18n } = useTranslation()
   const dispatch = useAppDispatch()
 
@@ -59,12 +60,14 @@ const App: FC<AppProps> = ({ Component, pageProps, router }) => {
       <AnimatePresence exitBeforeEnter initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
         <ThemeProvider theme={theme}>
           <Header languageCode={languageCode} changeLanguage={changeLanguage} />
-          <Sidenav
-            status={status}
-            handleSideNav={handleSideNav}
-            languageCode={languageCode}
-            changeLanguage={changeLanguage}
-          />
+          {!breakpoints.isUpMd ? (
+            <Sidenav
+              status={status}
+              handleSideNav={handleSideNav}
+              languageCode={languageCode}
+              changeLanguage={changeLanguage}
+            />
+          ) : null}
           <Component {...pageProps} />
         </ThemeProvider>
       </AnimatePresence>

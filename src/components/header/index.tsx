@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { NextLink } from 'src/components/link'
 
@@ -25,7 +26,7 @@ const Header = ({
   changeLanguage: (arg0: string) => void
 }): JSX.Element => {
   const { menu } = sideData.menuItem
-
+  const router = useRouter()
   const { t } = useTranslation()
 
   return (
@@ -46,7 +47,10 @@ const Header = ({
         </LogoContentBox>
         <ContentBox>
           {menu.links.map((link: Nav.Link, idx: number) => (
-            <LinkItem key={idx}>
+            <LinkItem
+              key={idx}
+              active={link.href !== '/' && router.asPath.includes(link.href) ? 'true' : 'false'}
+            >
               <NextLink href={link.href}>{t(`menu.${link.name}`)}</NextLink>
             </LinkItem>
           ))}
