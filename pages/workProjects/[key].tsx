@@ -58,7 +58,7 @@ export async function getStaticPaths() {
     .catch((error) => console.log(JSON.stringify(error)))
 
   return {
-    paths: list,
+    paths: list ?? [],
     fallback: 'blocking',
   }
 }

@@ -1,16 +1,4 @@
 {
-  "=============Title============": "=======Title====",
-  "title": {
-    "EN": "EN",
-    "TW": "TW",
-    "JP": "JP",
-    "hero_title_01": "Calligraphy, ",
-    "hero_title_02": "Coding",
-    "home_title": "Home",
-    "about_title": "About Me",
-    "work_title": "Work Project",
-    "contact_title": "Contact Me"
-  },
   "=============Common============": "=======Common====",
   "button": {
     "outer_link": "Outer link",
@@ -25,27 +13,18 @@
     "about": "About",
     "work_projects": "Work Projects",
     "side_projects": "Side Projects",
-    "arts": "Arts",
-    "contact": "Contact"
+    "arts": "Arts"
   },
-  "=============Article============": "=======Article====",
-  "article": {
-    "about_article_part1": "The university graduated from the Chinese Department. At the beginning, I was engaged in the editing of textbooks related to the undergraduate department. After I left due to health factors, I switched to the field of design because of my interest. At first, I accumulated work and experience in the way of SOHO, and later hoped to apply the design to a wider range of digital design, so I began to step into front-end web design by self-study.",
-    "about_article_part2": "While studying front-end design, also maintain the calligraphy interest that have cultivated since the university community. Now working hard to become a front-end developer focusing on digital art, and try to create as many digital and traditional cross-domain creations as possible."
+  "=============Home============": "=======Home====",
+  "home": {
+    "hero_title_01": "Calligraphy, ",
+    "hero_title_02": "Coding"
   },
-  "=============Work Page============": "=======Work Page====",
-  "work": {
-    "outer_link": "Outer link",
-    "confidentiality_clause": "Confidentiality clause",
-    "back_list": "Back List"
-  },
-  "=============Contact Page============": "=======Contact Page====",
-  "contact": {
-    "form_name": "Name",
-    "form_subject": "Subject",
-    "form_email": "Email",
-    "form_message": "Message",
-    "form_submit": "Submit"
+  "=============About============": "=======Article====",
+  "about": {
+    "about_article_01": "Graduated from the Chinese Department of the university, initially engaged in editorial work, and began to delve into the design field of interest after leaving due to health factors. From graphic design, web design, and front-end design, gradually deepen my basic understanding and application of programming languages. The technologies currently used are based on the framework of the React system, including Next.js with built-in SSR, and React Native for developing apps.",
+    "about_article_02": "Past experiences in different fields serve as another thinking aid, helping to be more logical when learning or expressing. The interest in calligraphy cultivated in college has also become one of the inspirations and directions for exploration. Currently, I focus on P5.js and graphic digital art and try to create as many digital and traditional cross-fields as possible.",
+    "about_article_03": "In response to the rapidly changing front-end field, in addition to daily writing, calligraphy, and anime and manga as personal interests, I also regularly track new technologies in various front-end fields and create experimental personal projects, including artistic creations."
   },
   "=============Error Page============": "=======Error Page====",
   "error": {

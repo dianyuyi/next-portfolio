@@ -6,7 +6,7 @@ const Title = ({ title }: { title: string }) => {
   return (
     <MainTitleContainer>
       <MainTitle>{title}</MainTitle>
-      {/* <TitleBg /> */}
+      <TitleBg />
     </MainTitleContainer>
   )
 }

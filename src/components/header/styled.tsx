@@ -1,7 +1,5 @@
 import tw, { styled } from 'twin.macro'
 
-import { NextLink } from 'src/components/link'
-
 export const Container = styled.div`
   ${tw`container mx-auto px-3`}
 `

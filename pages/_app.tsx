@@ -18,6 +18,7 @@ import GlobalStyles from 'src/styles/GlobalStyles'
 import { theme } from 'src/styles/theme'
 import Header from 'src/components/header'
 import Sidenav from 'src/components/sidenav'
+import Loading from 'src/components/loading'
 
 const App: FC<AppProps> = ({ Component, pageProps, router }) => {
   const { status, handleSideNav } = useSideNavSwitch(false)
@@ -59,6 +60,7 @@ const App: FC<AppProps> = ({ Component, pageProps, router }) => {
       <GlobalStyles />
       <AnimatePresence exitBeforeEnter initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
         <ThemeProvider theme={theme}>
+          <Loading />
           <Header languageCode={languageCode} changeLanguage={changeLanguage} />
           {!breakpoints.isUpMd ? (
             <Sidenav

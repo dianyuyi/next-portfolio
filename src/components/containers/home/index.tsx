@@ -22,8 +22,8 @@ const HomePage = ({ t }: { t: (arg0: string) => string }) => {
           />
         </HeroBg>
         <HeroContent>
-          <HeroH1>{t(`title.hero_title_01`)}</HeroH1>
-          <HeroH1>{t(`title.hero_title_02`)}</HeroH1>
+          <HeroH1>{t(`home.hero_title_01`)}</HeroH1>
+          <HeroH1>{t(`home.hero_title_02`)}</HeroH1>
         </HeroContent>
       </HeroContainer>
     </MainBg>

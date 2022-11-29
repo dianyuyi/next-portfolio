@@ -11,7 +11,7 @@ const sideData: Nav.Side = {
     closed: {
       clipPath: 'circle(24px at 90vw 36px)',
       transition: {
-        delay: 0.5,
+        delay: 0.1,
         type: 'spring',
         stiffness: 400,
         damping: 40,

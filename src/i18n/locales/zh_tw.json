@@ -1,16 +1,4 @@
 {
-  "=============Title============": "=======Title====",
-  "title": {
-    "EN": "英",
-    "TW": "繁",
-    "JP": "日",
-    "hero_title_01": "書墨與",
-    "hero_title_02": "程式之海",
-    "home_title": "回首頁",
-    "about_title": "關於我",
-    "work_title": "相關作品",
-    "contact_title": "聯絡我"
-  },
   "=============Common============": "=======Common====",
   "button": {
     "outer_link": "外部連結",
@@ -25,39 +13,18 @@
     "about": "關於我",
     "work_projects": "工作專案",
     "side_projects": "個人專案",
-    "arts": "藝術設計",
-    "contact": "聯絡我"
+    "arts": "藝術設計"
   },
-  "=============Article============": "=======Article====",
-  "article": {
-    "about_article_part1": "大學自中文系畢業。一開始，從事與本科系相關的教科書編輯工作，因為健康因素離開後，逐漸將興趣轉向設計領域。最初以SOHO接案的方式累積作品和經驗，之後希望把設計應用到更廣闊的數位領域，於是靠自學的方式開始跨足前端網頁設計。",
-    "about_article_part2": "鑽研前端設計的同時，也保持著從大學社團起培養的書法興趣，現在正向成為以數位藝術為主軸的前端開發者努力，盡可能嘗試多方面數位&傳統的跨領域創作。"
+  "=============Home============": "=======Home====",
+  "home": {
+    "hero_title_01": "書墨與",
+    "hero_title_02": "程式之海"
   },
-  "=============Work Page============": "=======Work Page====",
-  "work": {
-    "outer_link": "外部連結",
-    "confidentiality_clause": "保密條款",
-    "back_list": "回清單頁"
-  },
-  "=============Side Projects============": "=======Side Projects====",
-  "sideProjects": {
-    "list_title": "個人專案",
-    "confidentiality_clause": "保密條款",
-    "back_list": "回清單頁"
-  },
-  "=============Arts============": "=======Arts====",
-  "arts": {
-    "list_title": "藝術設計",
-    "confidentiality_clause": "保密條款",
-    "back_list": "回清單頁"
-  },
-  "=============Contact Page============": "=======Contact Page====",
-  "contact": {
-    "form_name": "姓名",
-    "form_subject": "主旨",
-    "form_email": "Email",
-    "form_message": "信件內容",
-    "form_submit": "送出"
+  "=============About============": "=======Article====",
+  "about": {
+    "about_article_01": "大學自中文系畢業，最初從事編輯工作，因為健康因素離開後開始鑽研有興趣的設計領域，從平面設計、網頁設計到前端設計，逐步加深自己對程式語言的基礎理解與應用。目前使用的技術以React體系的框架為主，包含內建SSR的Next.js、開發APP用的React Native。",
+    "about_article_02": "過去相異領域的經驗作為另一種思維輔助，幫助在學習或表達時更有邏輯性。而大學時代培養的書法興趣也成為探索的靈感與方向之一，目前以P5.js和平面數位藝術為主，盡可能嘗試多方面數位&傳統的跨領域創作。",
+    "about_article_03": "因應變化快速的前端領域，平時除了日常作為個人興趣的寫作、書法與動漫外，也會定期追蹤各種前端領域的新技術，並創作實驗性的個人專案，包含藝術性的創作。"
   },
   "=============Error Page============": "=======Error Page====",
   "error": {

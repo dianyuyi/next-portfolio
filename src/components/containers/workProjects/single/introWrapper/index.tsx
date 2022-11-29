@@ -8,9 +8,12 @@ import {
   IntroTagBox,
   IntroLink,
   IntroTag,
+  Block,
+  ListBox,
+  IconWrapper,
   BackList,
 } from './styled'
-import { BiLinkExternal } from 'react-icons/bi'
+import { BiLinkExternal, BiPen } from 'react-icons/bi'
 import { AiOutlineStop, AiOutlineBackward } from 'react-icons/ai'
 import { useTranslation } from 'react-i18next'
 
@@ -26,16 +29,23 @@ const IntroWrapper = ({ workProject }: { workProject: Notion.PageContent }): JSX
           return <IntroTag key={index}>{value.text}</IntroTag>
         })}
       </IntroTagBox>
-      <div>
+      <Block>
         {workProject?.workList.map((value, index: number) => {
-          return <p key={index}>{value.text}</p>
+          return (
+            <ListBox key={index}>
+              <IconWrapper>
+                <BiPen />
+              </IconWrapper>
+              <p>{value.text}</p>
+            </ListBox>
+          )
         })}
-      </div>
-      <div>
+      </Block>
+      <Block>
         {workProject?.contexts.map((value, index: number) => {
           return <IntroDescription key={index}>{value.text}</IntroDescription>
         })}
-      </div>
+      </Block>
 
       <IntroLink>
         <a href={workProject.url ? workProject.url : '#'} target="_blank" rel="noreferrer noopener">

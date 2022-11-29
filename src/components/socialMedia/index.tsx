@@ -3,14 +3,9 @@ import { FaLinkedin, FaGithubSquare, FaMedium, FaTwitterSquare } from 'react-ico
 
 import { MediaContainer, MediaList, MediaItem, IconLink } from './styled'
 
-interface Props {
-  mediaList: Layout.MediaList | null
-  color: string
-}
-
-const SocialMedia = ({ color, mediaList }: Props): JSX.Element => {
+const SocialMedia = ({ mediaList }: { mediaList: Layout.MediaList }): JSX.Element => {
   return (
-    <MediaContainer color={color}>
+    <MediaContainer>
       <MediaList>
         {mediaList &&
           mediaList.map((media: Layout.Media) => {
@@ -29,7 +24,7 @@ const SocialMedia = ({ color, mediaList }: Props): JSX.Element => {
             }
             return (
               <MediaItem key={media.id} aria-label={media.name}>
-                <IconLink href={media.url} target="_blank" color={color}>
+                <IconLink href={media.url} target="_blank">
                   {ReactIcon(media.icon)}
                 </IconLink>
               </MediaItem>

@@ -15,6 +15,7 @@ import {
   ListItem,
   ItemLink,
   LanguageWrapper,
+  LanguageItem,
   LanguageButton,
 } from './styled'
 import sideData from './sideData'
@@ -48,44 +49,36 @@ const SideNavbar = ({
     <SideContainer
       initial={false}
       animate={status ? 'open' : 'closed'}
+      active={status ? 'true' : 'false'}
       custom={height}
       ref={containerRef}
     >
       <MotionBg variants={sideData.sideBar} />
-      <MotionListWrapper
-        variants={sideData.navigation}
-        className={`${status ? '' : 'preventClick'}`}
-      >
-        {sideData.menuItem.menu.links.map((link: Nav.Link, idx: number) => (
-          <ListItem
-            key={idx}
-            onClick={() => handleSideNav()}
-            variants={sideData.menuItem.variants}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            active={link.href !== '/' && router.asPath.includes(link.href) ? 'true' : 'false'}
-          >
-            <ItemLink href={link.href}>{t(`menu.${link.name}`)}</ItemLink>
-          </ListItem>
-        ))}
-        <LanguageWrapper className={`${status ? '' : 'preventClick'}`}>
-          {sideData.menuItem.menu.languages.map((language: Nav.Language, idx: number) => (
+      {status ? (
+        <MotionListWrapper>
+          {sideData.menuItem.menu.links.map((link: Nav.Link, idx: number) => (
             <ListItem
               key={idx}
-              variants={sideData.menuItem.variants}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              onClick={() => handleSideNav()}
+              active={link.href !== '/' && router.asPath.includes(link.href) ? 'true' : 'false'}
             >
-              <LanguageButton
-                className={`${languageCode === language.code ? 'active' : ''}`}
-                onClick={() => changeLanguage(language.code)}
-              >
-                {t(`menu.${language.name}`)}
-              </LanguageButton>
+              <ItemLink href={link.href}>{t(`menu.${link.name}`)}</ItemLink>
             </ListItem>
           ))}
-        </LanguageWrapper>
-      </MotionListWrapper>
+          <LanguageWrapper>
+            {sideData.menuItem.menu.languages.map((language: Nav.Language, idx: number) => (
+              <LanguageItem key={idx} active={languageCode === language.code ? 'true' : 'false'}>
+                <LanguageButton
+                  active={languageCode === language.code ? 'true' : 'false'}
+                  onClick={() => changeLanguage(language.code)}
+                >
+                  {t(`menu.${language.name}`)}
+                </LanguageButton>
+              </LanguageItem>
+            ))}
+          </LanguageWrapper>
+        </MotionListWrapper>
+      ) : null}
       <ToggleButton onClick={() => handleSideNav()} aria-label="toggle-button">
         <svg width="23" height="23" viewBox="0 0 23 23">
           {sideData.menuToggle.map((toggle: Nav.Toggle, idx: number) => {

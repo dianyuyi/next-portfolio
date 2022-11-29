@@ -3,7 +3,8 @@ import { motion } from 'framer-motion'
 import { NextLink } from 'src/components/link'
 
 export const SideContainer = styled(motion.nav)`
-  ${tw`block fixed top-0 right-0 bottom-0 w-screen pointer-events-none z-[9999] md:hidden`}
+  ${tw`block fixed top-0 right-0 bottom-0 w-screen z-50 md:hidden`}
+  ${({ active }) => active === 'false' && tw`pointer-events-none`}
 `
 
 export const ToggleButton = styled.button`
@@ -14,49 +15,29 @@ export const MotionBg = styled(motion.div)`
   ${tw`absolute top-0 right-0 bottom-0 w-full bg-white  backdrop-saturate-200`}
 `
 
-export const MotionListWrapper = styled(motion.ul)`
-  ${tw`absolute flex flex-col justify-center items-center w-full py-6 mt-[10%] min-h-[100px]`}
-
-  &.preventClick {
-    ${tw`pointer-events-none`}
-
-    > li > a {
-      ${tw`pointer-events-none`}
-    }
-
-    > li > button {
-      ${tw`pointer-events-none`}
-    }
-  }
+export const MotionListWrapper = styled.ul`
+  ${tw`absolute flex flex-col justify-center items-center w-full py-6 mt-12`}
 `
 
-export const ListItem = styled(motion.li)`
-  ${tw`duration-300 hover:border-b-2 hover:border-b-black`}
-  ${({ active }) => (active === 'true' ? tw`border-b-2 border-b-black m-2` : tw`p-2`)}
+export const ListItem = styled.li`
+  ${tw`duration-300 hover:scale-110 mx-2 my-4`}
+  ${({ active }) =>
+    active === 'true' ? tw`border-b-2 border-b-black` : tw`hover:border-b-2 hover:border-b-black`}
 `
 
 export const ItemLink = styled(NextLink)`
   ${tw`no-underline py-0 px-2 text-lg font-light cursor-pointer text-zinc-900`}
-  pointer-events: fill;
 `
 
 export const LanguageWrapper = styled.div`
-  ${tw`flex items-center justify-center my-4`}
-
-  &.preventClick {
-    ${tw`pointer-events-none`}
-
-    > li > button {
-      ${tw`pointer-events-none`}
-    }
-  }
+  ${tw`flex items-center justify-center mt-12`}
+`
+export const LanguageItem = styled.li`
+  ${tw`mx-2 duration-300`}
+  ${({ active }) => active === 'false' && tw`hover:border-b-2 hover:border-b-black`}
 `
 
 export const LanguageButton = styled.button`
-  pointer-events: fill;
   ${tw`px-2 pb-1 duration-500 text-sm font-light text-zinc-900 `}
-
-  &.active {
-    ${tw`pb-0 border-b-2 border-b-zinc-900`}
-  }
+  ${({ active }) => active === 'true' && tw`pb-0.5 border-b-2 border-b-zinc-900`}
 `

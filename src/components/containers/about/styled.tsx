@@ -1,7 +1,7 @@
 import tw, { styled } from 'twin.macro'
 
 export const AboutContainer = styled.div`
-  ${tw`w-full h-full container flex flex-col mx-auto mt-12 pb-16 md:pb-4 lg:pb-0`}
+  ${tw`w-full h-full container flex flex-col mx-auto pb-16 pt-0 md:pt-8 md:pb-4 lg:pb-0`}
 `
 
 export const CircleClip = styled.div`
@@ -20,8 +20,15 @@ export const Text = styled.p`
   ${tw`text-sm leading-6 py-2 md:text-lg md:py-4`}
 `
 
+export const ContactBar = styled.div`
+  ${tw`flex justify-start items-center py-4 border-t border-t-zinc-300`}
+`
+export const IconWrapper = styled.div`
+  ${tw`pl-2 pr-4 text-zinc-600`}
+`
+
 export const ResumeBar = styled.div`
-  ${tw`w-auto flex justify-end mt-4 mx-auto pb-12 md:pb-4 md:mt-8 md:mr-5`}
+  ${tw`w-auto flex justify-end mt-4 mx-auto pt-6 pb-2 md:pb-4 md:mt-8 md:mr-5`}
 `
 
 export const ResumeBtn = styled.button`

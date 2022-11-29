@@ -8,14 +8,26 @@ export const IntroDate = styled.p`
   ${tw`text-sm text-gray-700 px-0 py-2 mt-2`}
 `
 export const IntroDescription = styled.p`
-  ${tw`text-base py-4 font-semibold leading-5`}
+  ${tw`text-base py-3 font-semibold leading-5`}
 `
 export const IntroTagBox = styled.div`
   ${tw`py-3 mb-4 border-x-0 border-y border-y-zinc-300`}
 `
 
 export const IntroTag = styled.div`
-  ${tw`inline-block py-1 px-2 mr-2 text-xs text-zinc-300 border border-zinc-300`}
+  ${tw`inline-block py-1 px-2 mr-2 text-sm text-zinc-300 border border-zinc-300`}
+`
+
+export const Block = styled.div`
+  ${tw`mb-3`}
+`
+
+export const ListBox = styled.div`
+  ${tw`flex justify-start items-start mb-1 text-xs text-zinc-700`}
+`
+
+export const IconWrapper = styled.div`
+  ${tw`basis-6	pr-2`}
 `
 
 export const IntroLink = styled.div`
