@@ -5,7 +5,7 @@ export const MainTitleContainer = styled.div`
 `
 
 export const MainTitle = styled.h1`
-  ${tw`relative my-16`}
+  ${tw`relative my-16 text-4xl`}
 
   &:after {
     content: '';
@@ -14,5 +14,5 @@ export const MainTitle = styled.h1`
 `
 
 export const TitleBg = styled.div`
-  ${tw`bg-no-repeat bg-contain bg-center bg-bottom absolute w-[200px] h-full bg-button-bg opacity-75`}
+  ${tw`bg-no-repeat bg-contain bg-center bg-bottom absolute w-[200px] h-full bg-button-bg opacity-50`}
 `
