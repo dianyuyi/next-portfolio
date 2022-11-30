@@ -7,22 +7,26 @@ export const ResponsiveImage = ({
   src,
   width,
   height,
-  objectFit = 'none',
   quality = 75,
   ...restProps
 }: ImageGlobal.ResponsiveProps): JSX.Element => {
   return (
-    <Box>
-      <Image
-        layout="responsive"
-        alt={alt}
-        src={src}
-        width={width}
-        height={height}
-        objectFit={objectFit}
-        quality={quality}
-        {...restProps}
-      ></Image>
-    </Box>
+    // <Box>
+    <Image
+      alt={alt}
+      width={width}
+      height={height}
+      src={src}
+      quality={quality}
+      sizes="(max-width: 768px) 100vw,
+        (max-width: 1200px) 50vw,
+        33vw"
+      style={{
+        width: '100%',
+        height: 'auto',
+      }}
+      {...restProps}
+    ></Image>
+    // </Box>
   )
 }

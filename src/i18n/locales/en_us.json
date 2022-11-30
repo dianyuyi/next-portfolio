@@ -1,0 +1,34 @@
+{
+  "=============Common============": "=======Common====",
+  "button": {
+    "outer_link": "Outer link",
+    "confidentiality_clause": "Confidentiality clause",
+    "back_list": "Back List"
+  },
+  "menu": {
+    "EN": "EN",
+    "TW": "TW",
+    "JP": "JP",
+    "home": "Home",
+    "about": "About",
+    "work_projects": "Work Projects",
+    "side_projects": "Side Projects",
+    "arts": "Arts"
+  },
+  "=============Home============": "=======Home====",
+  "home": {
+    "hero_title_01": "Calligraphy, ",
+    "hero_title_02": "Coding"
+  },
+  "=============About============": "=======Article====",
+  "about": {
+    "about_article_01": "Graduated from the Chinese Department of the university, initially engaged in editorial work, and began to delve into the design field of interest after leaving due to health factors. From graphic design, web design, and front-end design, gradually deepen my basic understanding and application of programming languages. The technologies currently used are based on the framework of the React system, including Next.js with built-in SSR, and React Native for developing apps.",
+    "about_article_02": "Past experiences in different fields serve as another thinking aid, helping to be more logical when learning or expressing. The interest in calligraphy cultivated in college has also become one of the inspirations and directions for exploration. Currently, I focus on P5.js and graphic digital art and try to create as many digital and traditional cross-fields as possible.",
+    "about_article_03": "In response to the rapidly changing front-end field, in addition to daily writing, calligraphy, and anime and manga as personal interests, I also regularly track new technologies in various front-end fields and create experimental personal projects, including artistic creations."
+  },
+  "=============Error Page============": "=======Error Page====",
+  "error": {
+    "error_msg": "Ohhh...it's mess up...",
+    "error_back": "Back index (ˊ˙w˙ˋ)?"
+  }
+}

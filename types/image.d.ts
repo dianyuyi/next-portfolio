@@ -2,10 +2,11 @@ declare namespace ImageGlobal {
   interface FillProps {
     alt: string
     src: string
-    width: number | string
-    height: number | string
-    objectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
+    width: string
+    height: string
     quality?: number
+    priority?: boolean
+    style?: object
   }
 
   interface ResponsiveProps {
@@ -13,7 +14,8 @@ declare namespace ImageGlobal {
     src: string
     width: number
     height: number
-    objectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
     quality?: number
+    priority?: boolean
+    style?: object
   }
 }

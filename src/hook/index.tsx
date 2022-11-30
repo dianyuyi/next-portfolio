@@ -1,2 +1,3 @@
-export * from './useWindowSize'
+export * from './useSideNavSwitch'
 export * from './useBreakpoints'
+export * from './useDimensions'

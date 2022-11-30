@@ -1,12 +1,12 @@
 import tw, { styled, css } from 'twin.macro'
 
 type BoxProps = {
-  width: number | string
-  height: number | string
+  width: string
+  height: string
 }
 
 export const Box = styled.div(({ width, height }: BoxProps) => [
-  tw`relative w-auto h-auto`,
+  tw`relative w-auto h-auto `,
   width &&
     css`
       width: ${width};

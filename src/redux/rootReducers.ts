@@ -1,22 +1,30 @@
-import { combineReducers } from '@reduxjs/toolkit'
+import { combineReducers, PayloadAction } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
 import isEqual from 'lodash/isEqual'
 
-import { initialState as artListSliceInitialState } from './server/artListSlice'
+import { initialState as pageCollectSliceInitialState } from './server/pageCollectSlice'
+import { initialState as databaseSliceInitialState } from './server/databaseSlice'
+
 import serverReducers from './server/reducers'
 import clientReducers from './client/reducers'
 
 const getServerSliceInitialState = (key: string) => {
   switch (key) {
-    case 'artListSlice':
-      return artListSliceInitialState
+    case 'pageCollectSlice':
+      return pageCollectSliceInitialState
+    case 'databaseSlice':
+      return databaseSliceInitialState
 
     default:
-      return {}
+      return { response: [], isLoading: null, errors: null }
   }
 }
 
-const hydrateServerState = (previousState, payloadState, initialState) => {
+const hydrateServerState = (
+  previousState: Store.InitialState,
+  payloadState: Store.InitialState,
+  initialState: Store.InitialState
+) => {
   if (isEqual(payloadState, initialState) && isEqual(previousState, initialState) === false) {
     return previousState
   }
@@ -24,7 +32,7 @@ const hydrateServerState = (previousState, payloadState, initialState) => {
   return payloadState
 }
 
-const handleHydrate = (state: Store.RootState, action) => {
+const handleHydrate = (state: RootState, action: PayloadAction<Store.RootState>) => {
   const nextState = {
     ...state,
     server: {
@@ -52,7 +60,9 @@ const rootReducer = combineReducers({
   client: clientReducers,
 })
 
-const reducer = (state: Store.RootState, action) => {
+type RootState = ReturnType<typeof rootReducer>
+
+const reducer = (state: RootState, action: PayloadAction<Store.RootState>) => {
   switch (action.type) {
     case HYDRATE:
       return handleHydrate(state, action)

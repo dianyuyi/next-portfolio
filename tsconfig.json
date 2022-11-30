@@ -22,6 +22,6 @@
     "incremental": true,
     "lib": ["es6", "dom", "esnext"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "server/notion/commonSDK"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
   "exclude": ["node_modules", ".next", "dist"]
 }

@@ -1,47 +1,99 @@
+'use client'
+
 import React, { useRef } from 'react'
-import { useDimensions } from 'src/utils/useDimensions'
-import { Navigation } from './Navigation'
-import { MenuToggle } from './MenuToggle'
-import { SideNav, SiderBg } from './styled'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'react-i18next'
+import { motion } from 'framer-motion'
 
-const sidebar = {
-  open: (height = 800) => ({
-    clipPath: `circle(${height * 2 + 200}px at 90vw 36px)`,
-    transition: {
-      type: 'spring',
-      stiffness: 20,
-      restDelta: 2,
-    },
-  }),
-  closed: {
-    clipPath: 'circle(24px at 90vw 36px)',
-    // clipPath: `polygon(85% 0%, 100vw 0%, 100vw 60px, 85% 60px)`,
-    transition: {
-      delay: 0.5,
-      type: 'spring',
-      stiffness: 400,
-      damping: 40,
-    },
-  },
-}
+import { useDimensions } from 'src/hook/useDimensions'
 
-const SideNavbar = () => {
-  // const [isOpen, toggleOpen] = useCycle(false, true);
-  const [isSideOpen, setIsSideOpen] = React.useState(false)
+import {
+  SideContainer,
+  MotionBg,
+  MotionListWrapper,
+  ToggleButton,
+  ListItem,
+  ItemLink,
+  LanguageWrapper,
+  LanguageItem,
+  LanguageButton,
+} from './styled'
+import sideData from './sideData'
+
+const SideNavbar = ({
+  status,
+  handleSideNav,
+  languageCode,
+  changeLanguage,
+}: {
+  status: boolean
+  handleSideNav: () => void
+  languageCode: string
+  changeLanguage: (arg0: string) => void
+}) => {
   const containerRef = useRef(null)
   const { height } = useDimensions(containerRef)
+  const router = useRouter()
+  const { t } = useTranslation()
 
+  const Path = (props: Nav.Toggle) => (
+    <motion.path
+      fill="transparent"
+      strokeWidth="2"
+      stroke="hsl(0, 0%, 18%)"
+      strokeLinecap="round"
+      {...props}
+    />
+  )
   return (
-    <SideNav
+    <SideContainer
       initial={false}
-      animate={isSideOpen ? 'open' : 'closed'}
+      animate={status ? 'open' : 'closed'}
+      active={status ? 'true' : 'false'}
       custom={height}
       ref={containerRef}
     >
-      <SiderBg variants={sidebar} />
-      <Navigation isSideOpen={isSideOpen} toggle={() => setIsSideOpen(!isSideOpen)} />
-      <MenuToggle toggle={() => setIsSideOpen(!isSideOpen)} />
-    </SideNav>
+      <MotionBg variants={sideData.sideBar} />
+      {status ? (
+        <MotionListWrapper>
+          {sideData.menuItem.menu.links.map((link: Nav.Link, idx: number) => (
+            <ListItem
+              key={idx}
+              onClick={() => handleSideNav()}
+              active={link.href !== '/' && router.asPath.includes(link.href) ? 'true' : 'false'}
+            >
+              <ItemLink href={link.href}>{t(`menu.${link.name}`)}</ItemLink>
+            </ListItem>
+          ))}
+          <LanguageWrapper>
+            {sideData.menuItem.menu.languages.map((language: Nav.Language, idx: number) => (
+              <LanguageItem key={idx} active={languageCode === language.code ? 'true' : 'false'}>
+                <LanguageButton
+                  active={languageCode === language.code ? 'true' : 'false'}
+                  onClick={() => changeLanguage(language.code)}
+                >
+                  {t(`menu.${language.name}`)}
+                </LanguageButton>
+              </LanguageItem>
+            ))}
+          </LanguageWrapper>
+        </MotionListWrapper>
+      ) : null}
+      <ToggleButton onClick={() => handleSideNav()} aria-label="toggle-button">
+        <svg width="23" height="23" viewBox="0 0 23 23">
+          {sideData.menuToggle.map((toggle: Nav.Toggle, idx: number) => {
+            return (
+              <Path
+                key={idx}
+                d={toggle.d}
+                variants={toggle.variants}
+                transition={toggle.transition}
+              />
+            )
+          })}
+        </svg>
+      </ToggleButton>
+    </SideContainer>
   )
 }
 

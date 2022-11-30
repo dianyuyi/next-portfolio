@@ -1,71 +1,56 @@
-import React from 'react'
-import { GetStaticProps } from 'next'
-import { useSelector, useDispatch } from 'react-redux'
-
-// import { getWorksAPI, getMediasAPI } from 'server/sheets/'
-// import { Client } from '@notionhq/client'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import Image from 'next/image'
+import { useTranslation } from 'react-i18next'
 
 import { wrapper } from 'src/redux/store'
-import { getArtListAsync } from 'src/redux/server/artListSlice'
+import { getDatabaseAsync } from 'src/redux/client/databaseSlice'
 
 import Layout from 'src/components/layout'
-
-interface Props {
-  // works: SheetGlobal.Works | null
-  // mediaList: SheetGlobal.MediaList | null
-  artList: object
-}
+import ArtListPage from 'src/components/containers/arts/list'
 
 const Arts = (): JSX.Element => {
-  const artList = useSelector((state: Store.RootState) => state.server.artListSlice.response)
+  const { t } = useTranslation()
+  const [arts, setArts] = useState<Notion.Collect>()
+
+  const database = useSelector((state: Store.RootState) => state.server.databaseSlice.response)
+
+  const languageCode = useSelector(
+    (state: Store.RootState) => state.client.languageCodeSlice.languageCode
+  )
+
+  useEffect(() => {
+    const getPageData = async () => {
+      await fetch(`/api/filterBlocks`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          languageCode,
+          database,
+        }),
+      })
+        .then((res) => res.json())
+        .then((pageData) => setArts(pageData))
+        .catch((error) => console.log(JSON.stringify(error)))
+    }
+    getPageData()
+  }, [languageCode, database])
+
   return (
-    <>
-      <main>
-        Test
-        {JSON.stringify(artList)}
-        {/* {JSON.stringify(testDataBase)} */}
-        {/* {works.map((work) => (
-          <p key={work.id}>{work.name_tw}</p>
-        ))} */}
-      </main>
-    </>
+    <Layout title={t(`menu.arts`)} description="arts 列表">
+      <ArtListPage arts={arts} t={t} />
+    </Layout>
   )
 }
 
-// export const getStaticProps: GetStaticProps = async () => {
 export const getStaticProps = wrapper.getStaticProps((store) => async () => {
-  await store.dispatch(getArtListAsync())
-  // const works = await getWorksAPI()
-  // const mediaList = await getMediasAPI()
-  // const notion = new Client({
-  //   auth: process.env.NOTION_TOKEN,
-  // })
-  // const getPage = async () => {
-  //   // const pageId = process.env.NOTION_PAGE_ID
-  //   const pageId = 'e72e92350af8487f8a753636e99d807c'
-  //   const response = await notion.pages.retrieve({ page_id: pageId })
-  //   return response
-  // }
-  // const testRes = await getPage()
-
-  // const testDataBase = await notion.databases.query({
-  //   database_id: 'd6247d8d5f8c4496bbdde456847b6183',
-  //   filter: {
-  //     property: 'Tags',
-  //     rich_text: {
-  //       contains: 'arts',
-  //     },
-  //   },
-  // })
+  await store.dispatch(getDatabaseAsync('arts'))
 
   return {
-    props: {
-      // works,
-      // mediaList,
-      // testRes,
-      // testDataBase,
-    },
-    revalidate: 60,
+    props: {},
+    revalidate: 60 * 5,
   }
 })
 
