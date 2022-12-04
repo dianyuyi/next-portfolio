@@ -36,11 +36,9 @@ const Arts = (): JSX.Element => {
         .then((res) => res.json())
         .then((pageData) => {
           setArts(pageData)
-          setIsLoading(false)
         })
         .catch((error) => {
           console.log(JSON.stringify(error))
-          setIsLoading(false)
         })
     }
     getPageData()
@@ -48,7 +46,7 @@ const Arts = (): JSX.Element => {
 
   return (
     <Layout title={t(`menu.arts`)} description="arts 列表">
-      <ArtListPage arts={arts} t={t} isLoading={isLoading} />
+      <ArtListPage arts={arts} t={t} />
     </Layout>
   )
 }

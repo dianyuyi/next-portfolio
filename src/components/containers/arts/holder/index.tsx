@@ -12,7 +12,7 @@ import ImgWrapper from 'src/components/containers/arts/art/imgWrapper'
 import IntroWrapper from 'src/components/containers/arts/art/introWrapper'
 import Loading from 'src/components/loading'
 
-export const ListHolder = ({ isLoading }: { isLoading: Global.Loading }): JSX.Element => {
+export const ListHolder = (): JSX.Element => {
   const defaultArts = Array(10)
     .fill(0)
     .map((item, idx) => {
@@ -32,7 +32,7 @@ export const ListHolder = ({ isLoading }: { isLoading: Global.Loading }): JSX.El
 
   return (
     <>
-      {isLoading ? <Loading /> : null}
+      <Loading />
       {defaultArts.map((art: Notion.ListObject) => {
         return (
           <ArtLink key={art.id} href={`/arts/${art.key}`} className="group">
@@ -52,7 +52,7 @@ export const ListHolder = ({ isLoading }: { isLoading: Global.Loading }): JSX.El
   )
 }
 
-export const ArtHolder = ({ isLoading }: { isLoading: Global.Loading }): JSX.Element => {
+export const ArtHolder = (): JSX.Element => {
   const defaultArt = {
     id: 'default-art',
     title: '',
@@ -66,7 +66,6 @@ export const ArtHolder = ({ isLoading }: { isLoading: Global.Loading }): JSX.Ele
 
   return (
     <>
-      {/* {isLoading ? <Loading /> : null} */}
       <Loading />
       <ImgWrapper art={defaultArt} />
       <IntroWrapper art={defaultArt} />

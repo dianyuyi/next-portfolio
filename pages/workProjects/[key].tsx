@@ -14,7 +14,6 @@ const SingleWork = () => {
   const { t } = useTranslation()
 
   const [workProject, setWorkProject] = useState<Notion.PageContent>()
-  const [isLoading, setIsLoading] = useState(false)
 
   const { key: pageKey } = router.query
 
@@ -40,11 +39,9 @@ const SingleWork = () => {
         .then((res) => res.json())
         .then((pageData) => {
           setWorkProject(pageData)
-          setIsLoading(false)
         })
         .catch((error) => {
           console.log(JSON.stringify(error))
-          setIsLoading(false)
         })
     }
     getPageData()
@@ -55,7 +52,7 @@ const SingleWork = () => {
       title={`${workProject?.title ?? t('workProjects.list_title')}`}
       description={`${workProject?.contexts[0]?.text ?? 'Work Project by Loxi'}`}
     >
-      <WorkPage workProject={workProject} t={t} isLoading={isLoading} />
+      <WorkPage workProject={workProject} t={t} />
     </Layout>
   )
 }

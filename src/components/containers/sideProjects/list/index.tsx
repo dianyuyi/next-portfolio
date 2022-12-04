@@ -8,11 +8,9 @@ import { Container, SideWrapper, CoverImg, MainLink, Title, TagsWrapper, Tag } f
 const SideListPage = ({
   sideProjects,
   t,
-  isLoading,
 }: {
   sideProjects: Notion.FilterList
   t: (arg0: string) => string
-  isLoading: Global.Loading
 }): JSX.Element => {
   return (
     <>
@@ -44,7 +42,7 @@ const SideListPage = ({
             )
           })
         ) : (
-          <ListHolder isLoading={isLoading} />
+          <ListHolder />
         )}
       </Container>
     </>

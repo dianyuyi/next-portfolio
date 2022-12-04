@@ -35,11 +35,9 @@ const SideProjects = (): JSX.Element => {
         .then((res) => res.json())
         .then((pageData) => {
           setSideProjects(pageData)
-          setIsLoading(false)
         })
         .catch((error) => {
           console.log(JSON.stringify(error))
-          setIsLoading(false)
         })
     }
     getPageData()
@@ -47,7 +45,7 @@ const SideProjects = (): JSX.Element => {
 
   return (
     <Layout title={t(`menu.side_projects`)} description="Side Project 列表">
-      <SideListPage sideProjects={sideProjects} t={t} isLoading={isLoading} />
+      <SideListPage sideProjects={sideProjects} t={t} />
     </Layout>
   )
 }
