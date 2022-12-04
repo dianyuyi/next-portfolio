@@ -21,7 +21,6 @@ declare namespace Global {
     nonce: string
   }
 
-  type Loading = bool
   type MediaList = Array<Media>
   type ResumeLinks = Array<ResumeLink>
 

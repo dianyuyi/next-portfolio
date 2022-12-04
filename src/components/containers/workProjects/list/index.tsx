@@ -7,11 +7,9 @@ import { Container, WorkWrapper, CoverImg, MainLink, Title, TagsWrapper, Tag } f
 const WorkListPage = ({
   workProjects,
   t,
-  isLoading,
 }: {
   workProjects: Notion.FilterList
   t: (arg0: string) => string
-  isLoading: Global.Loading
 }): JSX.Element => {
   return (
     <>
@@ -43,7 +41,7 @@ const WorkListPage = ({
             )
           })
         ) : (
-          <ListHolder isLoading={isLoading} />
+          <ListHolder />
         )}
       </Container>
     </>

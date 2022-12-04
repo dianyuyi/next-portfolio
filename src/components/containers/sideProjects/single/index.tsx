@@ -7,11 +7,9 @@ import { SideHolder } from 'src/components/containers/sideProjects/holder'
 const SidePage = ({
   sideProject,
   t,
-  isLoading,
 }: {
   sideProject: Notion.PageContent
   t: (arg0: string) => string
-  isLoading: Global.Loading
 }): JSX.Element => {
   return (
     <IntroWorkWrapper>
@@ -21,7 +19,7 @@ const SidePage = ({
           <IntroWrapper sideProject={sideProject} />
         </>
       ) : (
-        <SideHolder isLoading={isLoading} />
+        <SideHolder />
       )}
     </IntroWorkWrapper>
   )

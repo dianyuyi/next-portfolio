@@ -7,11 +7,9 @@ import { Container, ArtWrapper, CoverImg, ArtLink, Title, TagsWrapper, Tag } fro
 const ArtListPage = ({
   arts,
   t,
-  isLoading,
 }: {
   arts: Notion.FilterList
   t: (arg0: string) => string
-  isLoading: Global.Loading
 }): JSX.Element => {
   return (
     <>
@@ -34,7 +32,7 @@ const ArtListPage = ({
             )
           })
         ) : (
-          <ListHolder isLoading={isLoading} />
+          <ListHolder />
         )}
       </Container>
     </>

@@ -1,7 +1,7 @@
 import tw, { styled } from 'twin.macro'
 
 export const LoadingBox = styled.div`
-  ${tw`w-screen h-screen z-[9999] bg-white opacity-50 absolute top-0 left-0`}
+  ${tw`w-screen h-screen z-[9999] bg-white opacity-50 fixed top-0 left-0`}
 
   .box {
     ${tw`w-full max-w-[300px] justify-center items-center text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}

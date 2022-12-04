@@ -35,11 +35,9 @@ const WorkProjects = (): JSX.Element => {
         .then((res) => res.json())
         .then((pageData) => {
           setWorkProjects(pageData)
-          setIsLoading(false)
         })
         .catch((error) => {
           console.log(JSON.stringify(error))
-          setIsLoading(false)
         })
     }
     getPageData()
@@ -47,7 +45,7 @@ const WorkProjects = (): JSX.Element => {
 
   return (
     <Layout title={t(`menu.work_projects`)} description="Work Project 列表">
-      <WorkListPage workProjects={workProjects} t={t} isLoading={isLoading} />
+      <WorkListPage workProjects={workProjects} t={t} />
     </Layout>
   )
 }
