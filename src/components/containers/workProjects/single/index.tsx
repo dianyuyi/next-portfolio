@@ -7,9 +7,11 @@ import { WorkHolder } from 'src/components/containers/workProjects/holder'
 const WorkPage = ({
   workProject,
   t,
+  isLoading,
 }: {
   workProject: Notion.PageContent
   t: (arg0: string) => string
+  isLoading: Global.Loading
 }): JSX.Element => {
   return (
     <IntroWorkWrapper>
@@ -19,7 +21,7 @@ const WorkPage = ({
           <IntroWrapper workProject={workProject} />
         </>
       ) : (
-        <WorkHolder />
+        <WorkHolder isLoading={isLoading} />
       )}
     </IntroWorkWrapper>
   )

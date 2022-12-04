@@ -12,6 +12,8 @@ const SingleWork = () => {
   const router = useRouter()
 
   const [art, setArt] = useState<Notion.PageContent>()
+  const [isLoading, setIsLoading] = useState(false)
+
   const { key: pageKey } = router.query
 
   const languageCode = useSelector(
@@ -34,8 +36,14 @@ const SingleWork = () => {
         }),
       })
         .then((res) => res.json())
-        .then((pageData) => setArt(pageData))
-        .catch((error) => console.log(JSON.stringify(error)))
+        .then((pageData) => {
+          setArt(pageData)
+          setIsLoading(false)
+        })
+        .catch((error) => {
+          console.log(JSON.stringify(error))
+          setIsLoading(false)
+        })
     }
     getPageData()
   }, [pageKey, languageCode, pageCollect])
@@ -45,7 +53,7 @@ const SingleWork = () => {
       title={`${art?.title ?? 'Art'}`}
       description={`${art?.contexts[0]?.text ?? 'Art by Loxi'}`}
     >
-      <ArtPage art={art} />
+      <ArtPage art={art} isLoading={isLoading} />
     </Layout>
   )
 }

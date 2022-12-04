@@ -12,6 +12,7 @@ import WorkListPage from 'src/components/containers/workProjects/list'
 const WorkProjects = (): JSX.Element => {
   const { t } = useTranslation()
   const [workProjects, setWorkProjects] = useState<Notion.Collect>()
+  const [isLoading, setIsLoading] = useState(false)
 
   const database = useSelector((state: Store.RootState) => state.server.databaseSlice.response)
 
@@ -32,15 +33,21 @@ const WorkProjects = (): JSX.Element => {
         }),
       })
         .then((res) => res.json())
-        .then((pageData) => setWorkProjects(pageData))
-        .catch((error) => console.log(JSON.stringify(error)))
+        .then((pageData) => {
+          setWorkProjects(pageData)
+          setIsLoading(false)
+        })
+        .catch((error) => {
+          console.log(JSON.stringify(error))
+          setIsLoading(false)
+        })
     }
     getPageData()
   }, [languageCode, database])
 
   return (
     <Layout title={t(`menu.work_projects`)} description="Work Project 列表">
-      <WorkListPage workProjects={workProjects} t={t} />
+      <WorkListPage workProjects={workProjects} t={t} isLoading={isLoading} />
     </Layout>
   )
 }

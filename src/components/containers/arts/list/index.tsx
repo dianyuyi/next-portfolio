@@ -7,27 +7,12 @@ import { Container, ArtWrapper, CoverImg, ArtLink, Title, TagsWrapper, Tag } fro
 const ArtListPage = ({
   arts,
   t,
+  isLoading,
 }: {
   arts: Notion.FilterList
   t: (arg0: string) => string
+  isLoading: Global.Loading
 }): JSX.Element => {
-  const defaultArts = Array(10)
-    .fill(0)
-    .map((item, idx) => {
-      const value = {
-        id: `${item}-${idx}`,
-        key: '',
-        title: '',
-        cover: `data:image/svg+xml,%3Csvg width='600' height='600' viewBox='0 0 600 600' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='600' height='600' fill='%23F4F4F5'/%3E%3C/svg%3E%0A`,
-        date: '',
-        url: '',
-        type: '',
-        language: '',
-        tags: [],
-      }
-      return value
-    })
-
   return (
     <>
       <ListTitle title={t('menu.arts')} />
@@ -49,7 +34,7 @@ const ArtListPage = ({
             )
           })
         ) : (
-          <ListHolder />
+          <ListHolder isLoading={isLoading} />
         )}
       </Container>
     </>

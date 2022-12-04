@@ -10,8 +10,9 @@ import {
 } from 'src/components/containers/workProjects/list/styled'
 import ImgWrapper from 'src/components/containers/workProjects/single/imgWrapper'
 import IntroWrapper from 'src/components/containers/workProjects/single/introWrapper'
+import Loading from 'src/components/loading'
 
-export const ListHolder = (): JSX.Element => {
+export const ListHolder = ({ isLoading }: { isLoading: Global.Loading }): JSX.Element => {
   const defaultData = Array(10)
     .fill(0)
     .map((item, idx) => {
@@ -31,6 +32,7 @@ export const ListHolder = (): JSX.Element => {
 
   return (
     <>
+      {isLoading ? <Loading /> : null}
       {defaultData.map((workProject: Notion.ListObject) => {
         return (
           <MainLink
@@ -54,7 +56,7 @@ export const ListHolder = (): JSX.Element => {
   )
 }
 
-export const WorkHolder = (): JSX.Element => {
+export const WorkHolder = ({ isLoading }: { isLoading: Global.Loading }): JSX.Element => {
   const defaultWorkProject = {
     id: 'default-workProject',
     title: '',
@@ -68,6 +70,7 @@ export const WorkHolder = (): JSX.Element => {
 
   return (
     <>
+      {isLoading ? <Loading /> : null}
       <ImgWrapper workProject={defaultWorkProject} />
       <IntroWrapper workProject={defaultWorkProject} />
     </>

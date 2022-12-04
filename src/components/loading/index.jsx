@@ -1,40 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import Router from 'next/router'
+import React from 'react'
 
 import { LoadingBox } from './styled'
 
 export const Loading = () => {
-  const [processing, setProgressing] = useState(false)
-  let timer = null
-
-  useEffect(() => {
-    Router.events.on('routeChangeStart', routeChangeStart)
-    Router.events.on('routeChangeComplete', routeChangeEnd)
-    Router.events.on('routeChangeError', routeChangeEnd)
-    return () => {
-      Router.events.off('routeChangeStart', routeChangeStart)
-      Router.events.off('routeChangeComplete', routeChangeEnd)
-      Router.events.off('routeChangeError', routeChangeEnd)
-    }
-  }, [])
-
-  const routeChangeStart = (_, { shallow }) => {
-    if (!shallow) {
-      setProgressing(true)
-    }
-  }
-
-  const routeChangeEnd = (_, { shallow }) => {
-    if (!shallow) {
-      if (timer) clearTimeout(timer)
-      timer = setTimeout(() => {
-        setProgressing(false)
-      }, 200)
-    }
-  }
-
   return (
-    <LoadingBox processing={processing}>
+    <LoadingBox>
       <div className="box">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="-120 0 400 140.5" fill="#666">
           <title>Loxi</title>

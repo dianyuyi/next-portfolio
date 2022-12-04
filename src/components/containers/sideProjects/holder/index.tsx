@@ -10,8 +10,9 @@ import {
 } from 'src/components/containers/sideProjects/list/styled'
 import ImgWrapper from 'src/components/containers/sideProjects/single/imgWrapper'
 import IntroWrapper from 'src/components/containers/sideProjects/single/introWrapper'
+import Loading from 'src/components/loading'
 
-export const ListHolder = (): JSX.Element => {
+export const ListHolder = ({ isLoading }: { isLoading: Global.Loading }): JSX.Element => {
   const defaultData = Array(10)
     .fill(0)
     .map((item, idx) => {
@@ -31,6 +32,7 @@ export const ListHolder = (): JSX.Element => {
 
   return (
     <>
+      {isLoading ? <Loading /> : null}
       {defaultData.map((sideProject: Notion.ListObject) => {
         return (
           <MainLink
@@ -54,7 +56,7 @@ export const ListHolder = (): JSX.Element => {
   )
 }
 
-export const SideHolder = (): JSX.Element => {
+export const SideHolder = ({ isLoading }: { isLoading: Global.Loading }): JSX.Element => {
   const defaultSideProject = {
     id: 'default-sideProject',
     title: '',
@@ -68,6 +70,7 @@ export const SideHolder = (): JSX.Element => {
 
   return (
     <>
+      {isLoading ? <Loading /> : null}
       <ImgWrapper sideProject={defaultSideProject} />
       <IntroWrapper sideProject={defaultSideProject} />
     </>

@@ -5,7 +5,13 @@ import IntroWrapper from './introWrapper'
 import { ArtHolder } from 'src/components/containers/arts/holder'
 import { IntroWorkWrapper } from './styled'
 
-const ArtPage = ({ art }: { art: Notion.PageContent }): JSX.Element => {
+const ArtPage = ({
+  art,
+  isLoading,
+}: {
+  art: Notion.PageContent
+  isLoading: Global.Loading
+}): JSX.Element => {
   return (
     <IntroWorkWrapper>
       {art && Object.keys(art).length > 0 ? (
@@ -14,7 +20,7 @@ const ArtPage = ({ art }: { art: Notion.PageContent }): JSX.Element => {
           <IntroWrapper art={art} />
         </>
       ) : (
-        <ArtHolder />
+        <ArtHolder isLoading={isLoading} />
       )}
     </IntroWorkWrapper>
   )

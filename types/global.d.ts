@@ -11,6 +11,17 @@ declare namespace Global {
     url: string
   }
 
+  interface ProgressBar {
+    color: string
+    startPosition: number
+    stopDelayMs: number
+    height: number
+    showOnShallow: bool
+    options: object
+    nonce: string
+  }
+
+  type Loading = bool
   type MediaList = Array<Media>
   type ResumeLinks = Array<ResumeLink>
 

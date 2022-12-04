@@ -12,6 +12,7 @@ import SideListPage from 'src/components/containers/sideProjects/list'
 const SideProjects = (): JSX.Element => {
   const { t } = useTranslation()
   const [sideProjects, setSideProjects] = useState<Notion.Collect>()
+  const [isLoading, setIsLoading] = useState(false)
 
   const database = useSelector((state: Store.RootState) => state.server.databaseSlice.response)
 
@@ -32,15 +33,21 @@ const SideProjects = (): JSX.Element => {
         }),
       })
         .then((res) => res.json())
-        .then((pageData) => setSideProjects(pageData))
-        .catch((error) => console.log(JSON.stringify(error)))
+        .then((pageData) => {
+          setSideProjects(pageData)
+          setIsLoading(false)
+        })
+        .catch((error) => {
+          console.log(JSON.stringify(error))
+          setIsLoading(false)
+        })
     }
     getPageData()
   }, [languageCode, database])
 
   return (
     <Layout title={t(`menu.side_projects`)} description="Side Project 列表">
-      <SideListPage sideProjects={sideProjects} t={t} />
+      <SideListPage sideProjects={sideProjects} t={t} isLoading={isLoading} />
     </Layout>
   )
 }

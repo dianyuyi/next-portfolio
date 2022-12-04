@@ -6,6 +6,7 @@ import { AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
+import { Analytics } from '@vercel/analytics/react'
 
 import { wrapper } from 'src/redux/store'
 import { useSideNavSwitch, useBreakpoints } from 'src/hook'
@@ -18,7 +19,7 @@ import GlobalStyles from 'src/styles/GlobalStyles'
 import { theme } from 'src/styles/theme'
 import Header from 'src/components/header'
 import Sidenav from 'src/components/sidenav'
-import Loading from 'src/components/loading'
+import ProgressBar from 'src/components/progressBar'
 
 const App: FC<AppProps> = ({ Component, pageProps, router }) => {
   const { status, handleSideNav } = useSideNavSwitch(false)
@@ -60,7 +61,15 @@ const App: FC<AppProps> = ({ Component, pageProps, router }) => {
       <GlobalStyles />
       <AnimatePresence exitBeforeEnter initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
         <ThemeProvider theme={theme}>
-          <Loading />
+          <ProgressBar
+            color={'#27272a'}
+            height={4}
+            startPosition={0.3}
+            stopDelayMs={200}
+            showOnShallow={true}
+            options={{ showSpinner: false }}
+            nonce={''}
+          />
           <Header languageCode={languageCode} changeLanguage={changeLanguage} />
           {!breakpoints.isUpMd ? (
             <Sidenav
@@ -71,6 +80,7 @@ const App: FC<AppProps> = ({ Component, pageProps, router }) => {
             />
           ) : null}
           <Component {...pageProps} />
+          <Analytics />
         </ThemeProvider>
       </AnimatePresence>
     </>
