@@ -40,7 +40,7 @@ const IntroWrapper = ({ art }: { art: Notion.PageContent }): JSX.Element => {
       <IntroLink>
         <a href={art.url ? art.url : '#'} target="_blank" rel="noreferrer noopener">
           {art.url ? <BiLinkExternal /> : <AiOutlineStop />}
-          <span>{t(`${'button.outer_link'}`)}</span>
+          <span>{t(`${art.url ? 'button.outer_link' : 'button.confidentiality_clause'}`)}</span>
         </a>
       </IntroLink>
       <BackList href="/arts">
