@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import Image from 'next/image'
+import { END } from 'redux-saga'
 import { useTranslation } from 'react-i18next'
 
 import { wrapper } from 'src/redux/store'
-import { getDatabaseAsync } from 'src/redux/client/databaseSlice'
+import { getDatabaseRequest } from 'src/redux_saga/server/getDatabase/actions'
 
 import Layout from 'src/components/layout'
 import ArtListPage from 'src/components/containers/arts/list'
@@ -52,7 +52,9 @@ const Arts = (): JSX.Element => {
 }
 
 export const getStaticProps = wrapper.getStaticProps((store) => async () => {
-  await store.dispatch(getDatabaseAsync('arts'))
+  store.dispatch(getDatabaseRequest({ type: 'arts' }))
+  store.dispatch(END)
+  await store.sagaTask.toPromise()
 
   return {
     props: {},

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
-
+import { END } from 'redux-saga'
+import {
+  getPageCollectRequest,
+  resetGetPageCollect,
+} from 'src/redux_saga/server/getPageCollect/actions'
 import { wrapper } from 'src/redux/store'
-import { getPageCollectAsync } from 'src/redux/client/pageCollectSlice'
-
 import Layout from 'src/components/layout'
 import ArtPage from 'src/components/containers/arts/art'
 
@@ -69,7 +71,9 @@ export async function getStaticPaths() {
 export const getStaticProps = wrapper.getStaticProps((store) => async ({ params }) => {
   const pageKey = params.key as string
 
-  await store.dispatch(getPageCollectAsync(pageKey))
+  store.dispatch(getPageCollectRequest({ pageKey }))
+  store.dispatch(END)
+  await store.sagaTask.toPromise()
 
   return {
     props: {},
