@@ -4,7 +4,14 @@ import { getDatabaseAPI } from 'server/notion/getDataBaseAPI'
 import { getDatabaseSuccess, getDatabaseFailure } from './actions'
 import { actionTypes } from './actionTypes'
 
-export function* getDatabaseRequestSaga({ payload }) {
+import { Action } from 'redux'
+
+interface DatabaseAction extends Action {
+  payload: {
+    type: string
+  }
+}
+export function* getDatabaseRequestSaga({ payload }: DatabaseAction) {
   try {
     const response = yield call(getDatabaseAPI, payload.type)
     yield put(getDatabaseSuccess(response.results))
@@ -18,7 +25,7 @@ export function* getDatabaseRequestSaga({ payload }) {
 }
 
 function* getDatabaseSagas() {
-  yield all([takeLatest(actionTypes.GET_DATABASE_REQUEST, getDatabaseRequestSaga)])
+  yield takeLatest(actionTypes.GET_DATABASE_REQUEST, getDatabaseRequestSaga)
 }
 
 export default getDatabaseSagas

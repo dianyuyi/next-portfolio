@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { END } from 'redux-saga'
-import {
-  getPageCollectRequest,
-  resetGetPageCollect,
-} from 'src/redux_saga/server/getPageCollect/actions'
+import { getPageCollectRequest } from 'src/redux_saga/server/getPageCollect/actions'
 import { wrapper } from 'src/redux/store'
 import { usePageData } from 'src/hook'
 
@@ -17,8 +14,6 @@ const SingleWork = () => {
   const router = useRouter()
   const { t } = useTranslation()
 
-  // const [sideProject, setSideProject] = useState<Notion.PageContent>()
-
   const { key: pageKey } = router.query
 
   const languageCode = useSelector(
@@ -28,30 +23,7 @@ const SingleWork = () => {
     (state: Store.RootState) => state.server.pageCollectSlice.response
   )
 
-  const sideProject = usePageData(router.pathname, pageKey, languageCode, pageCollect)
-
-  // useEffect(() => {
-  //   const getPageData = async () => {
-  //     await fetch(`/api/sideProjects/${pageKey}/`, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         languageCode,
-  //         pageCollect,
-  //       }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((pageData) => {
-  //         setSideProject(pageData)
-  //       })
-  //       .catch((error) => {
-  //         console.log(JSON.stringify(error))
-  //       })
-  //   }
-  //   getPageData()
-  // }, [pageKey, languageCode, pageCollect])
+  const sideProject = usePageData('sideProjects', pageKey, languageCode, pageCollect)
 
   return (
     <Layout

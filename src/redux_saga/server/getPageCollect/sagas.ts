@@ -3,8 +3,14 @@ import { getPageCollectAPI } from 'server/notion/getPageCollectAPI'
 
 import { getPageCollectSuccess, getPageCollectFailure } from './actions'
 import { actionTypes } from './actionTypes'
+import { Action } from 'redux'
 
-export function* getPageCollectRequestSaga({ payload }) {
+interface CollectAction extends Action {
+  payload: {
+    pageKey: string
+  }
+}
+export function* getPageCollectRequestSaga({ payload }: CollectAction) {
   try {
     const response = yield call(getPageCollectAPI, payload.pageKey)
     yield put(getPageCollectSuccess(response.results))
