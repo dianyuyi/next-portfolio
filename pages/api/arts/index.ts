@@ -7,6 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Notion.Database | Global.Errors>
 ) {
+  console.log('test')
   if (req.method !== 'GET') {
     res.status(405).send({ message: 'Only GET requests allowed' })
     return

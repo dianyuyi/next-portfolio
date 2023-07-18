@@ -12,6 +12,7 @@ export default async function handler(
     res.status(405).send({ message: 'Only POST requests allowed' })
     return
   }
+  console.log(req.body)
   const { languageCode, pageCollect } = req.body
 
   let pageId = ''

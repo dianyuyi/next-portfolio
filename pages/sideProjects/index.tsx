@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
-import Image from 'next/image'
+import { END } from 'redux-saga'
 import { useTranslation } from 'react-i18next'
 
 import { wrapper } from 'src/redux/store'
-import { getDatabaseAsync } from 'src/redux/client/databaseSlice'
-
+import { getDatabaseRequest } from 'src/redux_saga/server/getDatabase/actions'
+import { usePageCollect } from 'src/hook'
 import Layout from 'src/components/layout'
 import SideListPage from 'src/components/containers/sideProjects/list'
 
 const SideProjects = (): JSX.Element => {
   const { t } = useTranslation()
-  const [sideProjects, setSideProjects] = useState<Notion.Collect>()
-  const [isLoading, setIsLoading] = useState(false)
 
   const database = useSelector((state: Store.RootState) => state.server.databaseSlice.response)
 
@@ -20,28 +18,7 @@ const SideProjects = (): JSX.Element => {
     (state: Store.RootState) => state.client.languageCodeSlice.languageCode
   )
 
-  useEffect(() => {
-    const getPageData = async () => {
-      await fetch(`/api/filterBlocks`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          languageCode,
-          database,
-        }),
-      })
-        .then((res) => res.json())
-        .then((pageData) => {
-          setSideProjects(pageData)
-        })
-        .catch((error) => {
-          console.log(JSON.stringify(error))
-        })
-    }
-    getPageData()
-  }, [languageCode, database])
+  const sideProjects = usePageCollect(languageCode, database)
 
   return (
     <Layout title={t(`menu.side_projects`)} description="Side Project 列表">
@@ -51,7 +28,9 @@ const SideProjects = (): JSX.Element => {
 }
 
 export const getStaticProps = wrapper.getStaticProps((store) => async () => {
-  await store.dispatch(getDatabaseAsync('side-projects'))
+  store.dispatch(getDatabaseRequest({ type: 'side-projects' }))
+  store.dispatch(END)
+  await store.sagaTask.toPromise()
 
   return {
     props: {},

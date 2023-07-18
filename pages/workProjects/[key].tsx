@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-
+import { END } from 'redux-saga'
+import { getPageCollectRequest } from 'src/redux_saga/server/getPageCollect/actions'
 import { wrapper } from 'src/redux/store'
-import { getPageCollectAsync } from 'src/redux/client/pageCollectSlice'
-
 import Layout from 'src/components/layout'
 import WorkPage from 'src/components/containers/workProjects/single'
+import { usePageData } from 'src/hook'
 
 const SingleWork = () => {
   const router = useRouter()
   const { t } = useTranslation()
-
-  const [workProject, setWorkProject] = useState<Notion.PageContent>()
 
   const { key: pageKey } = router.query
 
@@ -24,28 +22,7 @@ const SingleWork = () => {
     (state: Store.RootState) => state.server.pageCollectSlice.response
   )
 
-  useEffect(() => {
-    const getPageData = async () => {
-      await fetch(`/api/workProjects/${pageKey}/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          languageCode,
-          pageCollect,
-        }),
-      })
-        .then((res) => res.json())
-        .then((pageData) => {
-          setWorkProject(pageData)
-        })
-        .catch((error) => {
-          console.log(JSON.stringify(error))
-        })
-    }
-    getPageData()
-  }, [pageKey, languageCode, pageCollect])
+  const workProject = usePageData('sideProjects', pageKey, languageCode, pageCollect)
 
   return (
     <Layout
@@ -71,7 +48,9 @@ export async function getStaticPaths() {
 export const getStaticProps = wrapper.getStaticProps((store) => async ({ params }) => {
   const pageKey = params.key as string
 
-  await store.dispatch(getPageCollectAsync(pageKey))
+  store.dispatch(getPageCollectRequest({ pageKey }))
+  store.dispatch(END)
+  await store.sagaTask.toPromise()
 
   return {
     props: {},
