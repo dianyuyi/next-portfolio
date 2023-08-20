@@ -6,8 +6,8 @@ export const initialState = {
   errors: null,
 }
 
-const reducers = (state = initialState, action) => {
-  const { type, payload, errors } = action
+const reducers = (state = initialState, action: Saga.Action) => {
+  const { type, payload } = action
   switch (type) {
     case actionTypes.GET_PAGE_COLLECT_REQUEST:
       return {
@@ -17,7 +17,6 @@ const reducers = (state = initialState, action) => {
 
     case actionTypes.GET_PAGE_COLLECT_SUCCESS:
       return {
-        ...state,
         isLoading: false,
         response: payload,
         errors: null,
@@ -25,9 +24,9 @@ const reducers = (state = initialState, action) => {
 
     case actionTypes.GET_PAGE_COLLECT_FAILURE:
       return {
-        ...state,
         isLoading: false,
-        errors: errors,
+        response: initialState.response,
+        errors: payload,
       }
 
     case actionTypes.RESET_GET_PAGE_COLLECT:

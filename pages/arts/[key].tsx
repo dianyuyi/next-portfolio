@@ -19,6 +19,7 @@ const SingleWork = () => {
   const pageCollect = useSelector(
     (state: Store.RootState) => state.server.pageCollectSlice.response
   )
+
   const art = usePageData('sideProjects', pageKey, languageCode, pageCollect)
 
   return (

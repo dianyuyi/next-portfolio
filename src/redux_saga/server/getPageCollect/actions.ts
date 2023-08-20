@@ -1,18 +1,18 @@
 import { actionTypes } from './actionTypes'
 
-export const getPageCollectRequest = (payload) => ({
+export const getPageCollectRequest = (payload: Saga.Payload) => ({
   type: actionTypes.GET_PAGE_COLLECT_REQUEST,
   payload,
 })
 
-export const getPageCollectSuccess = (payload) => ({
+export const getPageCollectSuccess = (payload: Saga.Payload) => ({
   type: actionTypes.GET_PAGE_COLLECT_SUCCESS,
   payload,
 })
 
-export const getPageCollectFailure = (errors) => ({
+export const getPageCollectFailure = (errors: Saga.Payload) => ({
   type: actionTypes.GET_PAGE_COLLECT_FAILURE,
-  errors,
+  payload: errors,
 })
 
 export const resetGetPageCollect = () => ({

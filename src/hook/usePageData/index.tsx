@@ -39,7 +39,6 @@ export const usePageData = (
 
   useEffect(() => {
     const getPageData = async () => {
-      console.log('hook getPageData', route, pageKey)
       await fetch(`/api/${route}/${pageKey}/`, {
         method: 'POST',
         headers: {

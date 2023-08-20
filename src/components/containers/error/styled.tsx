@@ -3,7 +3,7 @@ import tw, { styled } from 'twin.macro'
 import { NextLink } from 'src/components/link'
 
 export const ErrorContainer = styled.div`
-  ${tw`w-full h-full relative inline-flex flex-col container mx-auto`}
+  ${tw`w-full h-full relative inline-flex flex-col container mx-auto mb-4`}
 `
 
 export const ErrorTitle = styled.h1`
