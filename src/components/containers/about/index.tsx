@@ -20,7 +20,7 @@ const AboutPage = ({ t }: { t: (arg0: string) => string }) => {
   const resumeLinks = [
     {
       language: 'EN',
-      url: 'https://www.cakeresume.com/xi-lo',
+      url: 'https://docs.google.com/document/d/e/2PACX-1vR6FZemsJ2vd1BFNE7FAP4HkkQ0loWH711hOCEKgrcXh_hbvTRa2LspmKKzgfQbDG9O3qZNBX0VYfqA/pub',
     },
     {
       language: 'TW',
