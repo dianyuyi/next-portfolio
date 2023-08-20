@@ -10,6 +10,7 @@ interface CollectAction extends Action {
     pageKey: string
   }
 }
+
 export function* getPageCollectRequestSaga({ payload }: CollectAction) {
   try {
     const response = yield call(getPageCollectAPI, payload.pageKey)

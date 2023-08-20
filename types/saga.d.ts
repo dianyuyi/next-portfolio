@@ -1,14 +1,9 @@
 declare namespace Saga {
   import { Action } from 'redux'
 
-  interface ReturnState extends Action {
-    payload: {
-      pageKey?: string
-      type?: string
-    }
-  }
   interface RequestPayload {
     type?: string
+    pageKey?: string
   }
 
   interface SuccessPayload {
@@ -16,7 +11,7 @@ declare namespace Saga {
   }
 
   interface FailurePayload {
-    errors: Errors
+    errors: string
   }
 
   interface RequestAction {
@@ -38,5 +33,4 @@ declare namespace Saga {
 
   type Payload = RequestPayload | SuccessPayload | FailurePayload
   type Action = RequestAction | SuccessAction | FailureAction
-  type SagaState = ReturnState
 }

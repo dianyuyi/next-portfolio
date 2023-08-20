@@ -14,7 +14,7 @@ export default async function handler(
   const response = await getDatabaseAPI('work-projects')
 
   const result = response.results.filter(
-    (item: Notion.Block) => item.properties.language.select.name === 'zh_tw'
+    (item: Notion.Block) => item.properties.language.select.name === 'en_us'
   )
 
   const keyList = notionKeyArrange(result)
