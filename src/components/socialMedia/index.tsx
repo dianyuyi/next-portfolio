@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaLinkedin, FaGithubSquare, FaMedium, FaTwitterSquare } from 'react-icons/fa'
+import { FaLinkedin, FaGithubSquare, FaMedium } from 'react-icons/fa'
 
 import { MediaContainer, MediaList, MediaItem, IconLink } from './styled'
 
@@ -18,8 +18,6 @@ const SocialMedia = ({ mediaList }: { mediaList: Layout.MediaList }): JSX.Elemen
 
                 case 'FaMedium':
                   return <FaMedium />
-                case 'FaTwitterSquare':
-                  return <FaTwitterSquare />
               }
             }
             return (
