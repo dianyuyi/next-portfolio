@@ -15,6 +15,6 @@ export const getDatabaseFailure = (errors: Saga.Payload) => ({
   errors,
 })
 
-export const resetGetProductInfo = () => ({
+export const resetGetDatabase = () => ({
   type: actionTypes.RESET_GET_DATABASE,
 })
