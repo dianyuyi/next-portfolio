@@ -11,7 +11,7 @@ declare namespace Saga {
   }
 
   interface FailurePayload {
-    errors: string
+    errors: string | undefined
   }
 
   interface RequestAction {

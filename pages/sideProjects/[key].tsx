@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { END } from 'redux-saga'
-import { getPageCollectRequest } from 'src/redux_saga/server/getPageCollect/actions'
+import {
+  getPageCollectRequest,
+  resetGetPageCollect,
+} from 'src/redux_saga/server/getSidePageCollect/actions'
 import { wrapper } from 'src/redux/store'
 import { usePageData } from 'src/hook'
 
@@ -12,6 +15,7 @@ import SidePage from 'src/components/containers/sideProjects/single'
 
 const SingleWork = () => {
   const router = useRouter()
+  const dispatch = useDispatch()
   const { t } = useTranslation()
 
   const { key: pageKey } = router.query
@@ -20,10 +24,16 @@ const SingleWork = () => {
     (state: Store.RootState) => state.client.languageCodeSlice.languageCode
   )
   const pageCollect = useSelector(
-    (state: Store.RootState) => state.server.pageCollectSlice.response
+    (state: Store.RootState) => state.server.pageSideCollectSlice.response
   )
 
   const sideProject = usePageData('sideProjects', pageKey, languageCode, pageCollect)
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetGetPageCollect())
+    }
+  }, [])
 
   return (
     <Layout

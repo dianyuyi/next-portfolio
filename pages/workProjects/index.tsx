@@ -1,18 +1,19 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { END } from 'redux-saga'
 import { useTranslation } from 'react-i18next'
 
 import { wrapper } from 'src/redux/store'
-import { getDatabaseRequest } from 'src/redux_saga/server/getDatabase/actions'
+import { getDatabaseRequest } from 'src/redux_saga/server/getWorkDatabase/actions'
 import { usePageCollect } from 'src/hook'
 import Layout from 'src/components/layout'
 import WorkListPage from 'src/components/containers/workProjects/list'
 
 const WorkProjects = (): JSX.Element => {
+  const dispatch = useDispatch()
   const { t } = useTranslation()
 
-  const database = useSelector((state: Store.RootState) => state.server.databaseSlice.response)
+  const database = useSelector((state: Store.RootState) => state.server.workDatabaseSlice.response)
 
   const languageCode = useSelector(
     (state: Store.RootState) => state.client.languageCodeSlice.languageCode

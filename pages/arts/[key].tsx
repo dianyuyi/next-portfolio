@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { END } from 'redux-saga'
-import { getPageCollectRequest } from 'src/redux_saga/server/getPageCollect/actions'
+import {
+  getPageCollectRequest,
+  resetGetPageCollect,
+} from 'src/redux_saga/server/getArtPageCollect/actions'
 import { wrapper } from 'src/redux/store'
 import Layout from 'src/components/layout'
 import ArtPage from 'src/components/containers/arts/art'
@@ -10,6 +13,7 @@ import { usePageData } from 'src/hook'
 
 const SingleWork = () => {
   const router = useRouter()
+  const dispatch = useDispatch()
 
   const { key: pageKey } = router.query
 
@@ -17,10 +21,16 @@ const SingleWork = () => {
     (state: Store.RootState) => state.client.languageCodeSlice.languageCode
   )
   const pageCollect = useSelector(
-    (state: Store.RootState) => state.server.pageCollectSlice.response
+    (state: Store.RootState) => state.server.pageArtCollectSlice.response
   )
 
-  const art = usePageData('sideProjects', pageKey, languageCode, pageCollect)
+  const art = usePageData('arts', pageKey, languageCode, pageCollect)
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetGetPageCollect())
+    }
+  }, [])
 
   return (
     <Layout
