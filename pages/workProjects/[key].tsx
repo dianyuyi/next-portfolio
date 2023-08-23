@@ -22,7 +22,7 @@ const SingleWork = () => {
     (state: Store.RootState) => state.server.pageCollectSlice.response
   )
 
-  const workProject = usePageData('sideProjects', pageKey, languageCode, pageCollect)
+  const workProject = usePageData('workProjects', pageKey, languageCode, pageCollect)
 
   return (
     <Layout
