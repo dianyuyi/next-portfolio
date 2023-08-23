@@ -11,7 +11,7 @@ interface DatabaseAction extends Action {
     type: string
   }
 }
-export function* getArtDatabaseRequestSaga({ payload }: DatabaseAction) {
+export function* getDatabaseRequestSaga({ payload }: DatabaseAction) {
   try {
     const response = yield call(getDatabaseAPI, payload.type)
     yield put(getDatabaseSuccess(response.results))
@@ -24,8 +24,8 @@ export function* getArtDatabaseRequestSaga({ payload }: DatabaseAction) {
   }
 }
 
-function* getArtDatabaseSagas() {
-  yield takeLatest(actionTypes.GET_DATABASE_REQUEST, getArtDatabaseRequestSaga)
+function* getDatabaseSagas() {
+  yield takeLatest(actionTypes.GET_DATABASE_REQUEST, getDatabaseRequestSaga)
 }
 
-export default getArtDatabaseSagas
+export default getDatabaseSagas

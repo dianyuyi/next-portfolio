@@ -11,14 +11,10 @@ interface CollectAction extends Action {
   }
 }
 
-export function* getArtPageCollectRequestSaga({ payload }: CollectAction) {
+export function* getPageCollectRequestSaga({ payload }: CollectAction) {
   try {
     const response = yield call(getPageCollectAPI, payload.pageKey)
-    if (response.results) {
-      yield put(getPageCollectSuccess(response.results))
-    } else {
-      yield put(getPageCollectFailure(response.message))
-    }
+    yield put(getPageCollectSuccess(response.results))
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||
@@ -28,8 +24,8 @@ export function* getArtPageCollectRequestSaga({ payload }: CollectAction) {
   }
 }
 
-function* getArtPageCollectSagas() {
-  yield all([takeLatest(actionTypes.GET_PAGE_COLLECT_REQUEST, getArtPageCollectRequestSaga)])
+function* getPageCollectSagas() {
+  yield all([takeLatest(actionTypes.GET_PAGE_COLLECT_REQUEST, getPageCollectRequestSaga)])
 }
 
-export default getArtPageCollectSagas
+export default getPageCollectSagas

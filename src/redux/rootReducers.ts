@@ -2,30 +2,18 @@ import { combineReducers, PayloadAction } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
 import isEqual from 'lodash/isEqual'
 
-import { initialState as pageSideCollectSliceInitialState } from 'src/redux_saga/server/getSidePageCollect/reducers'
-import { initialState as pageArtCollectSliceInitialState } from 'src/redux_saga/server/getSidePageCollect/reducers'
-import { initialState as pageWorkCollectSliceInitialState } from 'src/redux_saga/server/getWorkPageCollect/reducers'
-import { initialState as artDatabaseSliceInitialState } from 'src/redux_saga/server/getArtDatabase/reducers'
-import { initialState as workDatabaseSliceInitialState } from 'src/redux_saga/server/getWorkDatabase/reducers'
-import { initialState as sideDatabaseSliceInitialState } from 'src/redux_saga/server/getSideDatabase/reducers'
+import { initialState as pageCollectSliceInitialState } from 'src/redux_saga/server/getPageCollect/reducers'
+import { initialState as databaseSliceInitialState } from 'src/redux_saga/server/getDatabase/reducers'
 
 import serverReducers from './server/reducers'
 import clientReducers from './client/reducers'
 
 const getServerSliceInitialState = (key: string) => {
   switch (key) {
-    case 'pageSideCollectSlice':
-      return pageSideCollectSliceInitialState
-    case 'pageArtCollectSlice':
-      return pageArtCollectSliceInitialState
-    case 'pageWorkCollectSlice':
-      return pageWorkCollectSliceInitialState
-    case 'sideDatabaseSlice':
-      return sideDatabaseSliceInitialState
-    case 'artDatabaseSlice':
-      return artDatabaseSliceInitialState
-    case 'workDatabaseSlice':
-      return workDatabaseSliceInitialState
+    case 'pageCollectSlice':
+      return pageCollectSliceInitialState
+    case 'databaseSlice':
+      return databaseSliceInitialState
 
     default:
       return { response: [], isLoading: null, errors: null }

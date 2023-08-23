@@ -1,19 +1,18 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { END } from 'redux-saga'
 import { useTranslation } from 'react-i18next'
 
 import { wrapper } from 'src/redux/store'
-import { getDatabaseRequest, resetGetDatabase } from 'src/redux_saga/server/getArtDatabase/actions'
+import { getDatabaseRequest } from 'src/redux_saga/server/getDatabase/actions'
 import { usePageCollect } from 'src/hook'
 import Layout from 'src/components/layout'
 import ArtListPage from 'src/components/containers/arts/list'
 
 const Arts = (): JSX.Element => {
   const { t } = useTranslation()
-  const dispatch = useDispatch()
 
-  const database = useSelector((state: Store.RootState) => state.server.artDatabaseSlice.response)
+  const database = useSelector((state: Store.RootState) => state.server.databaseSlice.response)
 
   const languageCode = useSelector(
     (state: Store.RootState) => state.client.languageCodeSlice.languageCode
@@ -21,11 +20,6 @@ const Arts = (): JSX.Element => {
 
   const arts = usePageCollect(languageCode, database)
 
-  useEffect(() => {
-    return () => {
-      dispatch(resetGetDatabase())
-    }
-  }, [])
   return (
     <Layout title={t(`menu.arts`)} description="arts 列表">
       <ArtListPage arts={arts} t={t} />
