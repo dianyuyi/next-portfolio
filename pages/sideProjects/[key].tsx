@@ -1,28 +1,29 @@
-import React from 'react'
-import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
+// import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { END } from 'redux-saga'
-import { getPageCollectRequest } from 'src/redux_saga/server/getPageCollect/actions'
+// import { END } from 'redux-saga'
+// import { getPageCollectRequest } from 'src/redux_saga/server/getPageCollect/actions'
 import { wrapper } from 'src/redux/store'
 import { usePageData } from 'src/hook'
+import { getPageCollectAPI } from 'server/notion/getPageCollectAPI'
 
 import Layout from 'src/components/layout'
 import SidePage from 'src/components/containers/sideProjects/single'
 
-const SingleWork = () => {
-  const router = useRouter()
+const SingleWork = ({ pageKey, pageCollect }: { pageKey: string; pageCollect: Notion.Blocks }) => {
   const { t } = useTranslation()
 
-  const { key: pageKey } = router.query
+  // const [sideProject, setSideProject] = useState<Notion.PageContent>()
+
+  // // const { key: pageKey } = router.query
 
   const languageCode = useSelector(
     (state: Store.RootState) => state.client.languageCodeSlice.languageCode
   )
-  const pageCollect = useSelector(
-    (state: Store.RootState) => state.server.pageCollectSlice.response
-  )
-
+  // // const pageCollect = useSelector(
+  // //   (state: Store.RootState) => state.server.pageCollectSlice.response
+  // // )
   const sideProject = usePageData('sideProjects', pageKey, languageCode, pageCollect)
 
   return (
@@ -49,13 +50,14 @@ export async function getStaticPaths() {
 export const getStaticProps = wrapper.getStaticProps((store) => async ({ params }) => {
   const pageKey = params.key as string
 
-  store.dispatch(getPageCollectRequest({ pageKey }))
-  store.dispatch(END)
-  await store.sagaTask.toPromise()
+  const collect = await getPageCollectAPI(pageKey)
 
   return {
-    props: {},
-    revalidate: 60 * 5,
+    props: {
+      pageKey,
+      pageCollect: collect?.results ?? [],
+    },
+    revalidate: 60 * 30,
   }
 })
 
