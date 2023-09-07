@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import { getPageObjectAPI } from 'server/notion/getPageObjectAPI'
 import { getPageBlocksAPI } from 'server/notion/getPageBlocksAPI'
-import { notionBlocksArrange } from 'src/utils/notionFunc'
+import { notionBlocksArrange, notionFindPageId } from 'src/utils/notionFunc'
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,11 +14,7 @@ export default async function handler(
   }
   const { languageCode, pageCollect } = req.body
 
-  let pageId = ''
-  pageCollect.forEach((item: Notion.Block) => {
-    if (item.properties.language.select.name === languageCode)
-      pageId = item.properties.id.rich_text[0].plain_text
-  })
+  const pageId = notionFindPageId(languageCode, pageCollect)
 
   const pageObject = await getPageObjectAPI(pageId)
   const pageBlocks = await getPageBlocksAPI(pageId)

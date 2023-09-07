@@ -18,3 +18,8 @@ export const getPageCollectFailure = (errors: Saga.Payload) => ({
 export const resetGetPageCollect = () => ({
   type: actionTypes.RESET_GET_PAGE_COLLECT,
 })
+
+export const tickClock = (payload: boolean) => ({
+  type: actionTypes.START_CLOCK,
+  payload,
+})

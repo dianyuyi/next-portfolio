@@ -39,7 +39,7 @@ const App: FC<AppProps> = ({ Component, pageProps, router }) => {
   return (
     <>
       <Head>
-        <link rel="icon" href="/favicon.ico" type="image/png" />
+        <link rel="icon" href="assets//favicon.ico" type="image/png" />
       </Head>
       <DefaultSeo
         titleTemplate="%s | Loxi's Portfolio"

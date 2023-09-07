@@ -1,27 +1,23 @@
 import React from 'react'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { END } from 'redux-saga'
-import { getPageCollectRequest } from 'src/redux_saga/server/getPageCollect/actions'
+// import { END } from 'redux-saga'
+// import { getPageCollectRequest } from 'src/redux_saga/server/getPageCollect/actions'
+import { getPageCollectAPI } from 'server/notion/getPageCollectAPI'
+
 import { wrapper } from 'src/redux/store'
 import Layout from 'src/components/layout'
 import WorkPage from 'src/components/containers/workProjects/single'
 import { usePageData } from 'src/hook'
 
-const SingleWork = () => {
-  const router = useRouter()
+const SingleWork = ({ pageKey, pageCollect }: { pageKey: string; pageCollect: Notion.Blocks }) => {
+  // const router = useRouter()
   const { t } = useTranslation()
-
-  const { key: pageKey } = router.query
 
   const languageCode = useSelector(
     (state: Store.RootState) => state.client.languageCodeSlice.languageCode
   )
-  const pageCollect = useSelector(
-    (state: Store.RootState) => state.server.pageCollectSlice.response
-  )
-
   const workProject = usePageData('workProjects', pageKey, languageCode, pageCollect)
 
   return (
@@ -40,7 +36,7 @@ export async function getStaticPaths() {
     .catch((error) => console.log(JSON.stringify(error)))
 
   return {
-    paths: list ?? [],
+    paths: [],
     fallback: 'blocking',
   }
 }
@@ -48,13 +44,17 @@ export async function getStaticPaths() {
 export const getStaticProps = wrapper.getStaticProps((store) => async ({ params }) => {
   const pageKey = params.key as string
 
-  store.dispatch(getPageCollectRequest({ pageKey }))
-  store.dispatch(END)
-  await store.sagaTask.toPromise()
+  const state = store.getState()
+  const languageCode = state.client.languageCodeSlice.languageCode
+  const collect = await getPageCollectAPI(pageKey)
 
   return {
-    props: {},
-    revalidate: 60 * 5,
+    props: {
+      pageKey,
+      languageCode,
+      pageCollect: collect?.results ?? [],
+    },
+    revalidate: 60 * 30,
   }
 })
 

@@ -1,23 +1,19 @@
 import React from 'react'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
-import { END } from 'redux-saga'
-import { getPageCollectRequest } from 'src/redux_saga/server/getPageCollect/actions'
+// import { END } from 'redux-saga'
+// import { getPageCollectRequest } from 'src/redux_saga/server/getPageCollect/actions'
+import { getPageCollectAPI } from 'server/notion/getPageCollectAPI'
 import { wrapper } from 'src/redux/store'
 import Layout from 'src/components/layout'
 import ArtPage from 'src/components/containers/arts/art'
 import { usePageData } from 'src/hook'
 
-const SingleWork = () => {
-  const router = useRouter()
-
-  const { key: pageKey } = router.query
+const SingleWork = ({ pageKey, pageCollect }: { pageKey: string; pageCollect: Notion.Blocks }) => {
+  // const router = useRouter()
 
   const languageCode = useSelector(
     (state: Store.RootState) => state.client.languageCodeSlice.languageCode
-  )
-  const pageCollect = useSelector(
-    (state: Store.RootState) => state.server.pageCollectSlice.response
   )
 
   const art = usePageData('arts', pageKey, languageCode, pageCollect)
@@ -38,7 +34,7 @@ export async function getStaticPaths() {
     .catch((error) => console.log(JSON.stringify(error)))
 
   return {
-    paths: list ?? [],
+    paths: [],
     fallback: 'blocking',
   }
 }
@@ -46,13 +42,14 @@ export async function getStaticPaths() {
 export const getStaticProps = wrapper.getStaticProps((store) => async ({ params }) => {
   const pageKey = params.key as string
 
-  store.dispatch(getPageCollectRequest({ pageKey }))
-  store.dispatch(END)
-  await store.sagaTask.toPromise()
+  const collect = await getPageCollectAPI(pageKey)
 
   return {
-    props: {},
-    revalidate: 60 * 5,
+    props: {
+      pageKey,
+      pageCollect: collect?.results ?? [],
+    },
+    revalidate: 60 * 30,
   }
 })
 

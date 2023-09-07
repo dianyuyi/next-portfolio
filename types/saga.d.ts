@@ -26,11 +26,15 @@ declare namespace Saga {
     type: string
     payload: FailurePayload
   }
+  interface ClockAction {
+    type: string
+    payload: boolean
+  }
 
   interface ResetAction {
     type: string
   }
 
   type Payload = RequestPayload | SuccessPayload | FailurePayload
-  type Action = RequestAction | SuccessAction | FailureAction
+  type Action = RequestAction | SuccessAction | FailureAction | ClockAction
 }
